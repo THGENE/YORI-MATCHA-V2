@@ -1,0 +1,6 @@
+"use client";
+import Lottie from "lottie-react";
+
+export default function LottieAnimation({ src, className }) {
+  return <Lottie animationData={src} loop={true} className={className} />;
+}
