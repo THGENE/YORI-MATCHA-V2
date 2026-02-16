@@ -1,36 +1,50 @@
-"use client"
+import ProductCard from "@/components/product/ProductCard";
+import PreparationSteps from "@/components/matcha/PreparationSteps";
 
-import { I18nProvider } from "@/lib/i18n"
-import { Navbar } from "@/components/navbar"
-import { HeroSection } from "@/components/hero-section"
-import { RangesSection } from "@/components/ranges-section"
-import { ProductsSection } from "@/components/product-detail"
-import { PacksSection } from "@/components/packs-section"
-import { AboutSection } from "@/components/about-section"
-import { TerroirSection } from "@/components/terroir-section"
-import { EducationSection } from "@/components/education-section"
-import { BlogSection } from "@/components/blog-section"
-import { AccessoriesSection } from "@/components/accessories-section"
-import { ContactSection } from "@/components/contact-section"
-import { SiteFooter } from "@/components/site-footer"
+const products = [
+  {
+    id: "yori-uji",
+    name: "YORI UJI",
+    subtitle: "Single Garden • Uji, Japon",
+    price: 39.0,
+    mainImage: "/products/yori-uji.png",
+  },
+  {
+    id: "yori-yame",
+    name: "YORI YAME HERITAGE",
+    subtitle: "Heritage • Yame, Japon",
+    price: 42.0,
+    mainImage: "/products/yori-yame.png",
+  },
+  {
+    id: "yori-velvet",
+    name: "YORI VELVET",
+    subtitle: "Texture velours • Japon",
+    price: 45.0,
+    mainImage: "/products/yori-velvet.png",
+  },
+];
 
-export default function Page() {
+export default function HomePage() {
   return (
-    <I18nProvider>
-      <Navbar />
-      <main>
-        <HeroSection />
-        <RangesSection />
-        <PacksSection />
-        <ProductsSection />
-        <AboutSection />
-        <TerroirSection />
-        <EducationSection />
-        <AccessoriesSection />
-        <BlogSection />
-        <ContactSection />
-      </main>
-      <SiteFooter />
-    </I18nProvider>
-  )
+    <main className="min-h-screen bg-black text-white">
+      <section className="max-w-6xl mx-auto px-4 pt-16 pb-10">
+        <h1 className="text-4xl md:text-5xl font-semibold mb-4">
+          Matcha YORI
+        </h1>
+        <p className="text-neutral-400 max-w-xl">
+          Une sélection de matchas d’exception, pensés comme une expérience
+          aussi précise qu’un produit Apple.
+        </p>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-4 pb-16 grid gap-6 md:grid-cols-3">
+        {products.map((p) => (
+          <ProductCard key={p.id} {...p} />
+        ))}
+      </section>
+
+      <PreparationSteps />
+    </main>
+  );
 }
