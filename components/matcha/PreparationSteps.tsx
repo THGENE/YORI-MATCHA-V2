@@ -19,37 +19,17 @@ export default function PreparationSteps() {
 
       {/* 🎥 Bloc vidéo ajouté */}
       <div className="w-full rounded-2xl overflow-hidden mb-12">
-        <VideoPlayer src="/videos/preparation-matcha.mp4" />
+          {/* 🎥 Vidéo premium YouTube intégrée */}
+          <div className="w-full rounded-2xl overflow-hidden mb-12 aspect-video bg-black">
+            <iframe
+              src="https://www.youtube.com/embed/5U1KfL7b6As?rel=0&autoplay=1&mute=1&loop=1&playlist=5U1KfL7b6As"
+              title="Préparation du Matcha - Vidéo premium"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              className="w-full h-full border-0"
+            />
+          </div>
       </div>
-
-// Composant vidéo cliquable
-function VideoPlayer({ src }: { src: string }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(true);
-  return (
-    <video
-      ref={ref}
-      src={src}
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="w-full h-auto object-cover cursor-pointer"
-      onClick={() => {
-        if (!ref.current) return;
-        if (ref.current.paused) {
-          ref.current.play();
-          setPlaying(true);
-        } else {
-          ref.current.pause();
-          setPlaying(false);
-        }
-      }}
-      style={{ outline: playing ? "none" : "2px solid #8bc34a" }}
-      title="Cliquez pour lire/mettre en pause"
-    />
-  );
-}
 
       <div className="grid md:grid-cols-4 gap-6">
         {steps.map((step, index) => (
@@ -69,3 +49,5 @@ function VideoPlayer({ src }: { src: string }) {
     </section>
   );
 }
+
+// Vidéo premium intégrée via YouTube (plus de contrôle, qualité supérieure)
