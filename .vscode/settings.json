@@ -1,1 +1,10 @@
+{
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "css.validate": false,
+  "tailwindCSS.includeLanguages": {
+    "postcss": "css"
+  }
+}
 {}
