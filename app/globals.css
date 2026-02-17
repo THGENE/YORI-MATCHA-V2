@@ -6,6 +6,18 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Mappings from CSS variables to simple utility classes */
+  .bg-background { background-color: hsl(var(--background)); }
+  .text-foreground { color: hsl(var(--foreground)); }
+
+  .bg-card { background-color: hsl(var(--card)); }
+  .text-card-foreground { color: hsl(var(--card-foreground)); }
+
+  .bg-popover { background-color: hsl(var(--popover)); }
+  .text-popover-foreground { color: hsl(var(--popover-foreground)); }
+
+  .border-theme { border-color: hsl(var(--border)); }
 }
 
 @layer base {
@@ -47,8 +59,10 @@
 }
 
 @layer base {
-  * {
-    @apply border border-gray-300;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
   body {
     @apply bg-background text-foreground;
