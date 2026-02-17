@@ -8,4 +8,6 @@ const nextConfig = {
   },
 }
 
+// force rebuild
+
 export default nextConfig
