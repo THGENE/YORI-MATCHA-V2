@@ -3,12 +3,16 @@
 import { useState } from "react"
 import { useI18n } from "@/lib/i18n"
 import { Menu, X, ChevronDown, Globe, ShoppingBag } from "lucide-react"
+import CartSidebar from "@/components/CartSidebar"
+import { useCartStore } from "@/store/cartStore"
 
 export function Navbar() {
   const { t, locale, setLocale } = useI18n()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [rangesOpen, setRangesOpen] = useState(false)
   const [discoverOpen, setDiscoverOpen] = useState(false)
+  const [cartOpen, setCartOpen] = useState(false)
+  const cartCount = useCartStore((s) => s.items.reduce((sum, i) => sum + i.quantity, 0))
 
   const scrollTo = (id: string) => {
     setMobileOpen(false)
@@ -104,6 +108,21 @@ export function Navbar() {
 
           {/* Right side */}
           <div className="flex items-center gap-4">
+            {/* Panier (sidebar) */}
+            <button
+              onClick={() => setCartOpen(true)}
+              className="relative flex items-center justify-center text-foreground hover:text-primary transition-colors"
+              aria-label="Voir le panier"
+            >
+              <ShoppingBag className="h-6 w-6" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-2 bg-primary text-primary-foreground rounded-full px-2 text-xs font-bold">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+              {/* Sidebar panier */}
+              <CartSidebar open={cartOpen} onClose={() => setCartOpen(false)} />
             <button
               onClick={() => setLocale(locale === "fr" ? "en" : "fr")}
               className="flex items-center gap-1.5 text-sm text-foreground/70 hover:text-primary transition-colors"

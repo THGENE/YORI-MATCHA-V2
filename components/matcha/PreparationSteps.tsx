@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import React, { useRef, useState } from "react";
 
 const steps = [
   { title: "Dosage précis", text: "2 g de matcha tamisé pour une texture lisse." },
@@ -18,15 +19,37 @@ export default function PreparationSteps() {
 
       {/* 🎥 Bloc vidéo ajouté */}
       <div className="w-full rounded-2xl overflow-hidden mb-12">
-        <video
-          src="/videos/preparation-matcha.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-auto object-cover"
-        />
+        <VideoPlayer src="/videos/preparation-matcha.mp4" />
       </div>
+
+// Composant vidéo cliquable
+function VideoPlayer({ src }: { src: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(true);
+  return (
+    <video
+      ref={ref}
+      src={src}
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="w-full h-auto object-cover cursor-pointer"
+      onClick={() => {
+        if (!ref.current) return;
+        if (ref.current.paused) {
+          ref.current.play();
+          setPlaying(true);
+        } else {
+          ref.current.pause();
+          setPlaying(false);
+        }
+      }}
+      style={{ outline: playing ? "none" : "2px solid #8bc34a" }}
+      title="Cliquez pour lire/mettre en pause"
+    />
+  );
+}
 
       <div className="grid md:grid-cols-4 gap-6">
         {steps.map((step, index) => (
