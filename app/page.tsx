@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import ProductCard from "@/components/product/ProductCard";
 import PreparationSteps from "@/components/matcha/PreparationSteps";
 
@@ -48,3 +50,4 @@ export default function HomePage() {
     </main>
   );
 }
+
