@@ -16,6 +16,18 @@ export default function PreparationSteps() {
         Le rituel YORI Matcha
       </h2>
 
+      {/* 🎥 Bloc vidéo ajouté */}
+      <div className="w-full rounded-2xl overflow-hidden mb-12">
+        <video
+          src="/videos/preparation-matcha.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-auto object-cover"
+        />
+      </div>
+
       <div className="grid md:grid-cols-4 gap-6">
         {steps.map((step, index) => (
           <motion.div
