@@ -34,89 +34,13 @@ export function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50">
+    <header className="relative z-40 bg-background/90 backdrop-blur-md border-b border-border/50">
       <nav className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="flex h-16 items-center justify-between lg:h-20">
           {/* Logo */}
           <button onClick={() => scrollTo("hero")} className="flex items-center gap-2">
             <BrandLogo variant="header" />
           </button>
-
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
-            {/* Nos Gammes dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setRangesOpen(true)}
-              onMouseLeave={() => setRangesOpen(false)}
-            >
-              <button className="flex items-center gap-1 text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-                {t("nav.ranges")}
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              {rangesOpen && (
-                <div className="absolute top-full left-0 pt-2">
-                  <div className="bg-card border border-border rounded-sm p-3 min-w-48 shadow-xl">
-                    <button onClick={() => scrollTo("ceremonial")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
-                      {t("nav.ceremonial")}
-                    </button>
-                    <button onClick={() => scrollTo("grandcru")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
-                      {t("nav.grandCru")}
-                    </button>
-                    <button onClick={() => scrollTo("daily")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
-                      {t("nav.daily")}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Discover dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setDiscoverOpen(true)}
-              onMouseLeave={() => setDiscoverOpen(false)}
-            >
-              <button className="flex items-center gap-1 text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-                {t("nav.discover")}
-                <ChevronDown className="h-3 w-3" />
-              </button>
-              {discoverOpen && (
-                <div className="absolute top-full left-0 pt-2">
-                  <div className="bg-card border border-border rounded-sm p-3 min-w-56 shadow-xl">
-                    <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
-                      {t("nav.discoveryPack")}
-                    </button>
-                    <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
-                      {t("nav.duoCeremonial")}
-                    </button>
-                    <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
-                      {t("nav.duoGrandCru")}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <button onClick={() => scrollTo("bestsellers")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-              {t("nav.bestsellers")}
-            </button>
-            <button onClick={() => scrollTo("about")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-              {t("nav.about")}
-            </button>
-            <button onClick={() => scrollTo("accessories")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-              {t("nav.accessories")}
-            </button>
-            <button onClick={() => scrollTo("blog")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-              {t("nav.blog")}
-            </button>
-            <button onClick={() => scrollTo("education")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-              {t("nav.education")}
-            </button>
-            <button onClick={() => scrollTo("contact")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-              {t("nav.contact")}
-            </button>
-          </div>
 
           {/* Right side */}
           <div className="flex items-center gap-4">
@@ -157,6 +81,82 @@ export function Navbar() {
               {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
+        </div>
+
+        {/* Desktop Nav (below logo) */}
+        <div className="hidden lg:flex items-center justify-center gap-8 border-t border-border/40 py-3">
+          {/* Nos Gammes dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setRangesOpen(true)}
+            onMouseLeave={() => setRangesOpen(false)}
+          >
+            <button className="flex items-center gap-1 text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+              {t("nav.ranges")}
+              <ChevronDown className="h-3 w-3" />
+            </button>
+            {rangesOpen && (
+              <div className="absolute top-full left-0 pt-2">
+                <div className="bg-card border border-border rounded-sm p-3 min-w-48 shadow-xl">
+                  <button onClick={() => scrollTo("ceremonial")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {t("nav.ceremonial")}
+                  </button>
+                  <button onClick={() => scrollTo("grandcru")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {t("nav.grandCru")}
+                  </button>
+                  <button onClick={() => scrollTo("daily")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {t("nav.daily")}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Discover dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setDiscoverOpen(true)}
+            onMouseLeave={() => setDiscoverOpen(false)}
+          >
+            <button className="flex items-center gap-1 text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+              {t("nav.discover")}
+              <ChevronDown className="h-3 w-3" />
+            </button>
+            {discoverOpen && (
+              <div className="absolute top-full left-0 pt-2">
+                <div className="bg-card border border-border rounded-sm p-3 min-w-56 shadow-xl">
+                  <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {t("nav.discoveryPack")}
+                  </button>
+                  <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {t("nav.duoCeremonial")}
+                  </button>
+                  <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {t("nav.duoGrandCru")}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <button onClick={() => scrollTo("bestsellers")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+            {t("nav.bestsellers")}
+          </button>
+          <button onClick={() => scrollTo("about")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+            {t("nav.about")}
+          </button>
+          <button onClick={() => scrollTo("accessories")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+            {t("nav.accessories")}
+          </button>
+          <button onClick={() => scrollTo("blog")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+            {t("nav.blog")}
+          </button>
+          <button onClick={() => scrollTo("education")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+            {t("nav.education")}
+          </button>
+          <button onClick={() => scrollTo("contact")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+            {t("nav.contact")}
+          </button>
         </div>
 
         {/* Mobile menu */}
