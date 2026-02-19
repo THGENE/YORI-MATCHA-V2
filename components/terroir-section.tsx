@@ -7,16 +7,16 @@ import { useEffect, useState } from "react"
 
 const terroirBackgrounds = [
   {
-    src: "/images/terroir-yame-01.jpg",
-    alt: "Plantation de thé de Yame",
+    src: "/images/terroir-plantation-01.jpg",
+    alt: "Champs de thé en terrasse",
   },
   {
-    src: "/images/terroir-uji-01.jpg",
-    alt: "Plantation de thé de Uji à Kyoto",
+    src: "/images/terroir-plantation-02.jpg",
+    alt: "Plantation de thé en montagne",
   },
   {
-    src: "/images/terroir-uji-02.jpg",
-    alt: "Champs de thé de la région de Uji",
+    src: "/images/terroir-plantation-03.jpg",
+    alt: "Panorama de plantation de thé",
   },
 ]
 
@@ -52,12 +52,13 @@ export function TerroirSection() {
               src={background.src}
               alt={background.alt}
               fill
-              className={`object-cover brightness-105 contrast-95 saturate-90 transition-opacity duration-1000 ${
+              quality={100}
+              className={`object-cover object-center transition-opacity duration-1000 ${
                 index === activeBackgroundIndex ? "opacity-100" : "opacity-0"
               }`}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/30 to-background/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-background/10 to-background/35" />
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
