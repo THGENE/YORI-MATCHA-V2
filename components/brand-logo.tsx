@@ -38,13 +38,15 @@ export default function BrandLogo({ variant = "header", className, imageClassNam
       <Image
         src="/images/logo-y.png"
         alt="Logo YORI"
-        width={36}
-        height={36}
+        width={72}
+        height={72}
         className={cn(
-          "rounded-full border border-border/60 bg-card object-cover",
+          "rounded-full border border-border/60 bg-card object-contain object-center",
           styles.image,
           imageClassName
         )}
+        quality={100}
+        unoptimized
         priority={variant === "header"}
       />
 
