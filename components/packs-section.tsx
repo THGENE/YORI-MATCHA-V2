@@ -12,7 +12,9 @@ const packs = [
     titleKey: "packs.discovery.title",
     descKey: "packs.discovery.description",
     containsKey: "packs.discovery.contains",
-    image: "/images/sticks découvertes.png",
+    image: "/images/Yori Sticks découvertes.png",
+    sticks: 10,
+    tier: "mid",
     price: 14.90,
     details: {
       fr: "2 sticks Ceremonial (Yame Velvet + Uji Harmony) + 2 sticks Grand Cru (Yame Heritage + Uji Single Garden) + 1 stick Daily Matcha Latte",
@@ -24,7 +26,9 @@ const packs = [
     titleKey: "packs.duoCeremonial.title",
     descKey: "packs.duoCeremonial.description",
     containsKey: "packs.duoCeremonial.contains",
-    image: "/images/uji single garden.png",
+    image: "/images/Yori Sticks découvertes.png",
+    sticks: 4,
+    tier: "high",
     price: 7.90,
     details: {
       fr: "1 stick Yame Velvet + 1 stick Uji Harmony",
@@ -36,7 +40,9 @@ const packs = [
     titleKey: "packs.duoGrandCru.title",
     descKey: "packs.duoGrandCru.description",
     containsKey: "packs.duoGrandCru.contains",
-    image: "/images/yame heritage.png",
+    image: "/images/Yori Sticks découvertes.png",
+    sticks: 2,
+    tier: "ultra",
     price: 9.90,
     details: {
       fr: "1 stick Yame Heritage + 1 stick Uji Single Garden",
@@ -44,6 +50,12 @@ const packs = [
     },
   },
 ]
+
+const tierOverlayClass: Record<string, string> = {
+  mid: "bg-secondary/35",
+  high: "bg-primary/18",
+  ultra: "bg-primary/30",
+}
 
 export function PacksSection() {
   const { t, locale } = useI18n()
@@ -73,14 +85,18 @@ export function PacksSection() {
                   alt={t(pack.titleKey)}
                   style={{ objectFit: "cover", width: "100%", height: "100%" }}
                 />
+                <div className={`absolute inset-0 ${tierOverlayClass[pack.tier]}`} />
                 <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
+                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
                   <div className="flex items-center gap-2">
                     <Package className="h-4 w-4 text-primary" />
                     <span className="text-xs text-primary tracking-wider uppercase font-medium">
                       {t(pack.containsKey)}
                     </span>
                   </div>
+                  <span className="bg-background/75 text-foreground text-[11px] px-2 py-1 rounded-sm border border-border/60 whitespace-nowrap">
+                    {pack.sticks} sticks • {pack.tier === "mid" ? (locale === "fr" ? "Milieu de gamme" : "Mid-range") : pack.tier === "high" ? (locale === "fr" ? "Haut de gamme" : "Premium") : (locale === "fr" ? "Très haut de gamme" : "Ultra premium")}
+                  </span>
                 </div>
               </div>
 
