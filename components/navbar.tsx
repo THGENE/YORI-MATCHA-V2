@@ -58,25 +58,26 @@ export function Navbar() {
   return (
     <header className="relative z-40 bg-background/90 backdrop-blur-md border-b border-border/50">
       {addFeedbackOpen && lastAddedProduct && (
-        <div className="fixed inset-0 z-[120] bg-background/75 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="mx-auto mt-6 max-w-3xl bg-card border border-border rounded-sm shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-5 py-4 border-b border-border/50">
-              <h3 className="text-foreground text-2xl md:text-3xl font-semibold flex items-center gap-3">
-                <Check className="h-6 w-6 text-primary" />
+        <div className="fixed inset-0 z-[120] bg-background/85 backdrop-blur-md p-3 md:p-8 overflow-y-auto">
+          <div className="mx-auto mt-2 md:mt-5 w-full max-w-7xl bg-card/95 border border-border/60 ring-1 ring-border/40 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="flex items-center justify-between px-6 md:px-8 py-5 md:py-6 border-b border-border/50">
+              <h3 className="text-foreground text-2xl md:text-4xl font-semibold flex items-center gap-3 md:gap-4">
+                <Check className="h-6 w-6 md:h-7 md:w-7 text-primary" />
                 {locale === "fr" ? "Votre article a été ajouté au panier" : "Your item was added to cart"}
               </h3>
               <button
                 onClick={closeAddFeedback}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="h-10 w-10 rounded-full border border-border/60 bg-background/60 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-border transition-colors"
                 aria-label="Close"
               >
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 md:h-6 md:w-6" />
               </button>
             </div>
 
-            <div className="p-5 lg:p-6">
-              <div className="mb-5">
-                <p className="text-muted-foreground text-lg md:text-2xl text-center">
+            <div className="p-6 md:p-10 xl:p-12 space-y-10">
+              <div className="xl:grid xl:grid-cols-12 xl:gap-6 space-y-6 xl:space-y-0">
+                <div className="rounded-xl border border-border/50 bg-secondary/20 p-5 md:p-6 xl:col-span-7">
+                <p className="text-muted-foreground text-lg md:text-2xl text-center font-medium">
                   {remainingForFreeShipping > 0
                     ? locale === "fr"
                       ? `Plus que ${remainingForFreeShipping.toFixed(2)}€ pour profiter de la livraison offerte !`
@@ -86,21 +87,21 @@ export function Navbar() {
                       : "Free shipping unlocked!"}
                 </p>
 
-                <div className="mt-4">
-                  <div className="h-3 w-full bg-secondary rounded-full overflow-hidden">
+                <div className="mt-4 md:mt-5">
+                  <div className="h-3.5 w-full bg-secondary rounded-full overflow-hidden">
                     <div
                       className="h-full bg-primary transition-all duration-500"
                       style={{ width: `${freeShippingProgress}%` }}
                     />
                   </div>
-                  <p className="mt-2 text-center text-sm text-muted-foreground">
+                  <p className="mt-3 text-center text-sm md:text-base text-muted-foreground">
                     {locale === "fr" ? "Livraison offerte dès 45€ d'achat" : "Free shipping from 45€"}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 border border-border/50 rounded-sm p-4">
-                <div className="relative h-20 w-20 rounded-sm overflow-hidden bg-secondary/30">
+              <div className="flex items-center gap-5 border border-border/50 rounded-xl p-5 md:p-6 bg-background/40 xl:col-span-5">
+                <div className="relative h-24 w-24 md:h-28 md:w-28 xl:h-32 xl:w-32 rounded-lg overflow-hidden bg-secondary/30">
                   <Image
                     src={lastAddedProduct.image}
                     alt={lastAddedProduct.name}
@@ -109,20 +110,20 @@ export function Navbar() {
                   />
                 </div>
                 <div className="flex-1">
-                  <p className="text-foreground text-xl md:text-2xl font-semibold leading-tight">{lastAddedProduct.name}</p>
-                  <p className="text-base md:text-lg text-muted-foreground">{lastAddedProduct.subtitle[locale]}</p>
-                  <p className="text-sm text-muted-foreground mt-1">Ref. {lastAddedProduct.id}</p>
+                  <p className="text-foreground text-2xl md:text-3xl font-semibold leading-tight">{lastAddedProduct.name}</p>
+                  <p className="text-base md:text-xl text-muted-foreground mt-1">{lastAddedProduct.subtitle[locale]}</p>
+                  <p className="text-sm md:text-base text-muted-foreground mt-2">Ref. {lastAddedProduct.id}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-primary text-2xl md:text-3xl font-bold">{lastAddedProduct.price.toFixed(2)} €</p>
-                  <p className="text-base md:text-lg text-foreground">Qté : {lastAddedItem?.quantity ?? 1}</p>
+                  <p className="text-primary text-3xl md:text-4xl font-bold">{lastAddedProduct.price.toFixed(2)} €</p>
+                  <p className="text-base md:text-xl text-foreground mt-1">Qté : {lastAddedItem?.quantity ?? 1}</p>
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-4 xl:col-span-8">
                 <button
                   onClick={closeAddFeedback}
-                  className="flex-1 border border-primary text-primary px-4 py-3 md:py-4 text-base md:text-lg font-medium tracking-wide uppercase hover:bg-primary/10 transition-colors rounded-sm"
+                  className="flex-1 border border-primary text-primary px-4 py-4 md:py-5 text-base md:text-lg font-medium tracking-wide uppercase hover:bg-primary/10 transition-colors rounded-md"
                 >
                   {locale === "fr" ? "Continuer mes achats" : "Continue shopping"}
                 </button>
@@ -131,32 +132,33 @@ export function Navbar() {
                     closeAddFeedback()
                     setCartOpen(true)
                   }}
-                  className="flex-1 bg-primary text-primary-foreground px-4 py-3 md:py-4 text-base md:text-lg font-medium tracking-wide uppercase hover:bg-primary/90 transition-colors rounded-sm"
+                  className="flex-1 bg-primary text-primary-foreground px-4 py-4 md:py-5 text-base md:text-lg font-medium tracking-wide uppercase hover:bg-primary/90 transition-colors rounded-md"
                 >
                   {locale === "fr" ? "Finaliser ma commande" : "Checkout"}
                 </button>
               </div>
 
-              <div className="mt-6 rounded-full bg-secondary px-5 py-3 w-fit mx-auto">
-                <p className="text-sm text-muted-foreground">
+              <div className="rounded-full bg-secondary px-6 py-3.5 w-fit mx-auto xl:mx-0 xl:col-span-4 xl:self-center">
+                <p className="text-sm md:text-base text-muted-foreground">
                   {locale === "fr" ? "Livraison offerte dès 45 € d'achat" : "Free shipping from 45€"}
                 </p>
               </div>
+              </div>
 
               {similarProducts.length > 0 && (
-                <div className="mt-6">
+                <div>
                   <h4 className="text-3xl md:text-4xl font-semibold text-foreground mb-6 text-center">
                     {locale === "fr" ? "Notre sélection" : "Our selection"}
                   </h4>
-                  <div className="grid sm:grid-cols-3 gap-4">
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {similarProducts.map((product) => (
                       <Link
                         key={product.id}
                         href={`/produit/${product.id}`}
                         onClick={closeAddFeedback}
-                        className="border border-border/50 rounded-sm p-3 hover:border-primary/40 transition-colors bg-background"
+                        className="border border-border/50 rounded-xl p-4 hover:border-primary/40 transition-colors bg-background"
                       >
-                        <div className="relative h-36 w-full rounded-sm overflow-hidden mb-3 bg-secondary/30">
+                        <div className="relative h-44 w-full rounded-lg overflow-hidden mb-4 bg-secondary/30">
                           <Image
                             src={product.image}
                             alt={product.name}
