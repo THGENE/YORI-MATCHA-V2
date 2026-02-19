@@ -128,13 +128,13 @@ function ProductCard({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem)
   const [expanded, setExpanded] = useState(false)
   const resolvedImage = catalogById[product.id]?.image ?? product.image
+  const powderOnLeft = product.id === "yame-heritage"
 
   return (
     <div className="product-card-interactive bg-card border border-border/50 rounded-sm overflow-hidden transition-all duration-300 h-full flex flex-col">
       <div className="relative aspect-square overflow-hidden bg-[#050505]">
         <PackshotImage
           overlay={false}
-          flipX={product.id === "yame-velvet"}
           src={resolvedImage || "/placeholder.svg"}
           alt={product.name}
           style={{ objectFit: "contain", width: "100%", height: "100%", padding: "10%" }}
@@ -143,7 +143,7 @@ function ProductCard({ product }: { product: Product }) {
           src="/images/matcha-overlay.svg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-y-0 right-0 h-full w-[58%] object-cover pointer-events-none opacity-95"
+          className={`absolute inset-y-0 h-full w-[58%] object-cover pointer-events-none opacity-95 ${powderOnLeft ? "left-0" : "right-0"}`}
         />
         {product.badge && (
           <div className="absolute top-4 left-4">

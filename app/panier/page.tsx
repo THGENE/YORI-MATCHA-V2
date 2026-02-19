@@ -394,7 +394,7 @@ export default function PanierPage() {
                           src={product?.image ?? "/images/logo-y.png"}
                           alt={item.name}
                           fill
-                          className={`${darkBackdrop ? "object-contain" : "object-cover"} ${item.id === "yame-velvet" ? "-scale-x-100" : ""}`}
+                          className={darkBackdrop ? "object-contain" : "object-cover"}
                         />
                         <Image
                           src="/images/matcha-overlay.svg"

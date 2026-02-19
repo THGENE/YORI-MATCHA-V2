@@ -13,71 +13,15 @@ type LocalizedText = {
 type DetailBlock = {
   title: LocalizedText
   content: LocalizedText
-  image: string
-  imageAlt: LocalizedText
+  image?: string
+  imageAlt?: LocalizedText
+  videoSrc?: string
+  videoPoster?: string
+  videoLabel?: LocalizedText
+  videoClassName?: string
 }
 
 const articles = [
-  {
-    id: "production",
-    titleKey: "blog.articles.production.title",
-    excerptKey: "blog.articles.production.excerpt",
-    image: "/images/blog-process-plantation.jpg",
-    hasVideo: true,
-    videoUrl: "https://www.youtube.com/embed/KlFXl--H8eM",
-    date: "2025-12-15",
-    detailIntro: {
-      fr: "Cette vidéo montre les étapes clés de la culture du thé, de l'ombrage des plants à la récolte fine des jeunes feuilles. L'objectif est de préserver un profil riche en umami et une texture soyeuse en tasse.",
-      en: "This video highlights the key stages of tea cultivation, from shading the plants to carefully harvesting the youngest leaves. The goal is to preserve a rich umami profile and a silky texture in the cup.",
-    },
-    detailBlocks: [
-      {
-        title: {
-          fr: "1. L'ombrage avant récolte",
-          en: "1. Pre-harvest shading",
-        },
-        content: {
-          fr: "Pendant les dernières semaines, les théiers sont ombrés pour stimuler la chlorophylle et renforcer la douceur. Ce procédé donne un matcha plus vert, plus rond et moins astringent.",
-          en: "During the final weeks, tea plants are shaded to boost chlorophyll and enhance sweetness. This process creates a greener, rounder and less astringent matcha.",
-        },
-        image: "/images/blog-process-harvest-japan.jpg",
-        imageAlt: {
-          fr: "Récolte des feuilles de thé au Japon",
-          en: "Tea leaf harvest in Japan",
-        },
-      },
-      {
-        title: {
-          fr: "2. Sélection des feuilles tendres",
-          en: "2. Tender leaf selection",
-        },
-        content: {
-          fr: "Seules les feuilles les plus jeunes sont retenues pour conserver un profil fin. Cette sélection limite l'amertume et améliore la douceur naturelle en bouche.",
-          en: "Only the youngest leaves are selected to keep a refined profile. This selection reduces bitterness and improves natural sweetness on the palate.",
-        },
-        image: "/images/blog-process-tea-picking.jpg",
-        imageAlt: {
-          fr: "Sélection manuelle des jeunes feuilles de thé",
-          en: "Manual selection of young tea leaves",
-        },
-      },
-      {
-        title: {
-          fr: "3. Résultat en tasse",
-          en: "3. Cup result",
-        },
-        content: {
-          fr: "Le résultat est un matcha crémeux, dense et parfaitement équilibré. C'est ce qui donne son identité au profil Yame Velvet présenté dans la vidéo.",
-          en: "The result is a creamy, dense and perfectly balanced matcha. This is what defines the Yame Velvet profile shown in the video.",
-        },
-        image: "/images/blog-process-green-tea.jpg",
-        imageAlt: {
-          fr: "Feuilles de thé en phase de transformation",
-          en: "Tea leaves during processing stage",
-        },
-      },
-    ] as DetailBlock[],
-  },
   {
     id: "transformation",
     titleKey: "blog.articles.transformation.title",
@@ -142,58 +86,60 @@ const articles = [
     id: "ceremony",
     titleKey: "blog.articles.ceremony.title",
     excerptKey: "blog.articles.ceremony.excerpt",
-    image: "/images/blog-process-harvest-japan.jpg",
+    image: "/images/blog-ceremony-ritual.jpg",
     hasVideo: true,
     videoUrl: "https://www.youtube.com/embed/xD7qUfSOGOE",
     date: "2025-10-10",
     detailIntro: {
-      fr: "Cette vidéo présente les bases d'une cérémonie simple à reproduire à la maison. L'accent est mis sur la précision des gestes et l'équilibre entre eau, température et fouettage.",
-      en: "This video presents the basics of a simple ceremony you can reproduce at home. The focus is on precise gestures and the balance between water, temperature and whisking.",
+      fr: "Cette vidéo est dédiée uniquement aux étapes de la cérémonie du thé : préparation de l'espace, gestes précis, service et dégustation. Elle suit la logique du rituel pour respecter l'esprit du chanoyu.",
+      en: "This video focuses only on tea ceremony steps: space preparation, precise gestures, serving and tasting. It follows the ritual flow to preserve the spirit of chanoyu.",
     },
     detailBlocks: [
       {
         title: {
-          fr: "1. Préparer les ustensiles",
-          en: "1. Prepare utensils",
+          fr: "1. Préparer l'espace et les ustensiles",
+          en: "1. Prepare the space and utensils",
         },
         content: {
-          fr: "Un bol préchauffé, un chasen hydraté et une eau à la bonne température créent de meilleures conditions pour la mousse. Cette étape évite aussi les grumeaux.",
-          en: "A preheated bowl, hydrated chasen and proper water temperature create better conditions for foam. This step also helps avoid clumps.",
+          fr: "Commencez par organiser un espace calme, purifier les ustensiles et préchauffer le bol. Cette ouverture donne le rythme de la cérémonie et prépare une texture régulière.",
+          en: "Start by setting a calm space, purifying utensils, and preheating the bowl. This opening sets the ceremony rhythm and prepares a smooth texture.",
         },
-        image: "/images/blog-process-plantation.jpg",
+        image: "/images/blog-ceremony-performance.jpg",
         imageAlt: {
-          fr: "Plantation de thé pour la production de matcha",
-          en: "Tea plantation for matcha production",
+          fr: "Mise en place de la cérémonie du thé",
+          en: "Tea ceremony setup",
         },
       },
       {
         title: {
-          fr: "2. Fouetter avec rythme",
-          en: "2. Whisk with rhythm",
+          fr: "2. Doser, tamiser puis fouetter",
+          en: "2. Dose, sift, then whisk",
         },
         content: {
-          fr: "Un mouvement en W, rapide mais léger, permet d'obtenir une mousse fine. Le geste doit rester souple pour préserver la texture.",
-          en: "A quick yet light W motion creates a fine foam. The gesture should stay flexible to preserve texture.",
+          fr: "Le matcha est d'abord tamisé, puis mélangé à une eau maîtrisée en température. Le fouettage en W crée une mousse fine, geste central de la cérémonie.",
+          en: "Matcha is first sifted, then mixed with temperature-controlled water. W-shaped whisking creates fine foam, a central gesture of the ceremony.",
         },
-        image: "/images/blog-process-tea-picking.jpg",
-        imageAlt: {
-          fr: "Récolte manuelle des feuilles de thé",
-          en: "Manual tea leaf picking",
+        videoSrc: "/videos/ceremony-dosage-whisk-ai.mp4",
+        videoPoster: "/images/blog-ceremony-whisk.jpg",
+        videoLabel: {
+          fr: "Vidéo IA - dosage, tamisage et fouettage du matcha",
+          en: "AI video - matcha dosing, sifting and whisking",
         },
+        videoClassName: "h-full w-full object-cover object-center scale-[1.18] origin-center",
       },
       {
         title: {
-          fr: "3. Déguster en pleine conscience",
-          en: "3. Taste mindfully",
+          fr: "3. Servir et déguster selon le rituel",
+          en: "3. Serve and taste according to ritual",
         },
         content: {
-          fr: "Prendre le temps de sentir puis de goûter permet de mieux percevoir les notes végétales et umami. C'est l'esprit même du rituel présenté dans la vidéo.",
-          en: "Taking time to smell and taste helps perceive vegetal and umami notes more clearly. This is the very spirit of the ritual shown in the video.",
+          fr: "Le bol est présenté avec attention, puis dégusté en pleine conscience. Cette dernière étape met l'accent sur le respect, la gratitude et la qualité de présence.",
+          en: "The bowl is presented with intention, then tasted mindfully. This final step emphasizes respect, gratitude, and quality of presence.",
         },
-        image: "/images/blog-process-stone-mill.jpg",
+        image: "/images/blog-ceremony-ritual.jpg",
         imageAlt: {
-          fr: "Mouture du matcha sur meule en pierre",
-          en: "Matcha milling on stone grinder",
+          fr: "Dégustation pendant une cérémonie du thé",
+          en: "Tasting during a tea ceremony",
         },
       },
     ] as DetailBlock[],
@@ -239,7 +185,7 @@ export function BlogSection() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
-                    className="h-full w-full border-0"
+                    className="h-full w-full border-0 scale-[1.03] origin-center"
                   />
                 ) : (
                   <>
@@ -322,7 +268,7 @@ export function BlogSection() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
-                  className="h-full w-full border-0"
+                  className="h-full w-full border-0 scale-[1.03] origin-center"
                 />
               </div>
             </div>
@@ -332,12 +278,23 @@ export function BlogSection() {
                 <section key={`${selectedArticle.id}-${index}`} className="grid md:grid-cols-2 gap-6 items-center">
                   <div className={index % 2 === 0 ? "md:order-1" : "md:order-2"}>
                     <div className="relative aspect-[4/3] overflow-hidden rounded-sm border border-border/50">
-                      <Image
-                        src={block.image}
-                        alt={block.imageAlt[locale]}
-                        fill
-                        className="object-cover"
-                      />
+                      {block.videoSrc ? (
+                        <video
+                          src={block.videoSrc}
+                          poster={block.videoPoster}
+                          controls
+                          playsInline
+                          className={block.videoClassName ?? "h-full w-full object-cover object-center"}
+                          aria-label={block.videoLabel?.[locale] ?? "Video"}
+                        />
+                      ) : block.image && block.imageAlt ? (
+                        <Image
+                          src={block.image}
+                          alt={block.imageAlt[locale]}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : null}
                     </div>
                   </div>
                   <div className={index % 2 === 0 ? "md:order-2" : "md:order-1"}>

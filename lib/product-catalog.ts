@@ -13,7 +13,7 @@ export const catalogProducts: CatalogProduct[] = [
     id: "yame-velvet",
     name: "Yame Velvet",
     category: "matcha",
-    image: "/images/yame heritage.png",
+    image: "/images/Yori yame velvet.png",
     price: 34.9,
     subtitle: {
       fr: "Matcha Ceremonial • Yame, Japon",
@@ -88,7 +88,7 @@ export const catalogProducts: CatalogProduct[] = [
     id: "discovery",
     name: "Pack Decouverte",
     category: "pack",
-    image: "/images/sticks découvertes.png",
+    image: "/images/Yori Sticks découvertes.png",
     price: 14.9,
     subtitle: {
       fr: "Pack de 5 sticks",
