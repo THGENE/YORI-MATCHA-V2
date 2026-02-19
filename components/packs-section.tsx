@@ -64,7 +64,7 @@ export function PacksSection() {
           {packs.map((pack) => (
             <div
               key={pack.id}
-              className="bg-card border border-border/50 rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-300 group"
+              className="bg-card border border-border/50 rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-300 group h-full flex flex-col"
             >
               <div className="relative aspect-video overflow-hidden">
                 <PackshotImage
@@ -83,7 +83,7 @@ export function PacksSection() {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="font-serif text-xl font-bold text-foreground">
                     {t(pack.titleKey)}
@@ -103,7 +103,7 @@ export function PacksSection() {
 
                 <button
                   onClick={() => router.push(`/produit/${pack.id}`)}
-                  className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 text-sm font-medium tracking-wider uppercase hover:bg-primary/90 transition-colors rounded-sm"
+                  className="w-full mt-auto flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 text-sm font-medium tracking-wider uppercase hover:bg-primary/90 transition-colors rounded-sm"
                 >
                   <ShoppingBag className="h-4 w-4" />
                   {t("products.addToCart")}

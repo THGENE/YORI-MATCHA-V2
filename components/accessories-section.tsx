@@ -87,7 +87,7 @@ export function AccessoriesSection() {
           {accessories.map((item) => (
             <div
               key={item.id}
-              className="bg-card border border-border/50 p-6 rounded-sm hover:border-primary/30 transition-colors"
+              className="bg-card border border-border/50 p-6 rounded-sm hover:border-primary/30 transition-colors h-full flex flex-col"
             >
               <h3 className="font-serif text-xl font-bold text-foreground mb-2">
                 {t(item.titleKey)}
@@ -95,7 +95,7 @@ export function AccessoriesSection() {
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 {t(item.descKey)}
               </p>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mt-auto">
                 <span className="text-primary font-bold text-lg">{item.price.toFixed(2)}{"€"}</span>
                 <button
                   onClick={() => router.push(`/produit/${item.id}`)}

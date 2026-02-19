@@ -127,7 +127,7 @@ function ProductCard({ product }: { product: Product }) {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <div className="bg-card border border-border/50 rounded-sm overflow-hidden hover:border-primary/30 transition-all duration-300">
+    <div className="bg-card border border-border/50 rounded-sm overflow-hidden hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
       <div className="relative aspect-square overflow-hidden">
         <PackshotImage
           src={product.image || "/placeholder.svg"}
@@ -143,7 +143,7 @@ function ProductCard({ product }: { product: Product }) {
         )}
       </div>
 
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-3">
           <h3 className="font-serif text-xl font-bold text-foreground">{product.name}</h3>
           <span className="text-primary font-bold text-lg">{product.price.toFixed(2)}{"€"}</span>
@@ -239,7 +239,7 @@ function ProductCard({ product }: { product: Product }) {
 
         <button
           onClick={() => router.push(`/produit/${product.id}`)}
-          className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 text-sm font-medium tracking-wider uppercase hover:bg-primary/90 transition-colors rounded-sm"
+          className="w-full mt-auto flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 text-sm font-medium tracking-wider uppercase hover:bg-primary/90 transition-colors rounded-sm"
         >
           <ShoppingBag className="h-4 w-4" />
           {t("products.addToCart")}
