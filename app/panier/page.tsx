@@ -3,12 +3,12 @@
 import { useEffect, useMemo, useState } from "react"
 import type { FormEvent } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { useCartStore } from "@/store/cartStore"
 import { catalogById } from "@/lib/product-catalog"
 import { ArrowLeft, ChevronDown, Lock, Trash2, X } from "lucide-react"
 import StripeProvider from "@/components/checkout/StripeProvider"
 import CheckoutForm from "@/components/checkout/CheckoutForm"
+import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage"
 
 type Account = {
   title: "M" | "Mme"
@@ -389,18 +389,10 @@ export default function PanierPage() {
                   <article key={item.id} className="grid grid-cols-[1.5fr_0.6fr_0.5fr_0.7fr] gap-4 items-center border-b border-border/70 pb-6">
                     <div className="flex items-center gap-4 min-w-0">
                       <div className="product-visual-shell relative h-20 w-20 rounded-sm overflow-hidden shrink-0">
-                        <Image
+                        <PackshotImage
                           src={product?.image ?? "/images/logo-y.png"}
                           alt={item.name}
-                          fill
-                          className="object-contain"
-                        />
-                        <Image
-                          src="/images/matcha-overlay.svg"
-                          alt=""
-                          aria-hidden
-                          fill
-                          className="product-powder-overlay pointer-events-none object-cover object-right w-[58%] left-auto right-0"
+                          style={PACKSHOT_PREMIUM_STYLE}
                         />
                       </div>
                       <div className="min-w-0">

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { X } from "lucide-react";
 import { catalogById } from "@/lib/product-catalog";
-import Image from "next/image";
+import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage";
 
 export default function CartSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const items = useCartStore((s) => s.items);
@@ -60,18 +60,10 @@ export default function CartSidebar({ open, onClose }: { open: boolean; onClose:
             items.map((item) => (
               <div key={item.id} className="flex items-start gap-3 border border-border/50 rounded-sm p-3 bg-background/40">
                 <div className="product-visual-shell relative h-10 w-10 rounded-sm overflow-hidden shrink-0">
-                  <Image
+                  <PackshotImage
                     src={catalogById[item.id]?.image ?? "/images/logo-y.png"}
                     alt={item.name}
-                    fill
-                    className="object-contain"
-                  />
-                  <Image
-                    src="/images/matcha-overlay.svg"
-                    alt=""
-                    aria-hidden
-                    fill
-                    className="product-powder-overlay pointer-events-none object-cover object-right w-[58%] left-auto right-0"
+                    style={PACKSHOT_PREMIUM_STYLE}
                   />
                 </div>
                 <div className="flex-1 min-w-0">

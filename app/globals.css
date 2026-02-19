@@ -97,8 +97,7 @@
   }
 
   .product-powder-overlay {
-    opacity: 0.95;
-    filter: hue-rotate(-8deg) saturate(1.08) brightness(0.94);
+    opacity: 1;
   }
 }
 

@@ -1,7 +1,7 @@
 "use client"
 
 import { useI18n } from "@/lib/i18n"
-import PackshotImage from "@/components/PackshotImage"
+import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { catalogById } from "@/lib/product-catalog"
@@ -65,7 +65,7 @@ export function RangesSection() {
                 <PackshotImage
                   src={productImage || "/placeholder.svg"}
                   alt={t(range.titleKey)}
-                  style={{ objectFit: "contain", width: "100%", height: "100%", padding: "8%" }}
+                  style={PACKSHOT_PREMIUM_STYLE}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
                 <div className="absolute bottom-4 left-4">

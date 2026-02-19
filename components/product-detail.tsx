@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useI18n } from "@/lib/i18n"
-import PackshotImage from "@/components/PackshotImage"
+import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage"
 import { Star, ShoppingBag, ChevronDown, ChevronUp } from "lucide-react"
 import { useCartStore } from "@/store/cartStore"
 import Link from "next/link"
@@ -133,16 +133,9 @@ function ProductCard({ product }: { product: Product }) {
     <div className="product-card-interactive bg-card border border-border/50 rounded-sm overflow-hidden transition-all duration-300 h-full flex flex-col">
       <div className="relative aspect-square overflow-hidden bg-[#050505]">
         <PackshotImage
-          overlay={false}
           src={resolvedImage || "/placeholder.svg"}
           alt={product.name}
-          style={{ objectFit: "contain", width: "100%", height: "100%", padding: "10%" }}
-        />
-        <img
-          src="/images/matcha-overlay.svg"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-y-0 right-0 h-full w-[58%] object-cover pointer-events-none opacity-95"
+          style={PACKSHOT_PREMIUM_STYLE}
         />
         {product.badge && (
           <div className="absolute top-4 left-4">

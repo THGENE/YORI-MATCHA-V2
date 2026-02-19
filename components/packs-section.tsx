@@ -1,7 +1,7 @@
 "use client"
 
 import { useI18n } from "@/lib/i18n"
-import PackshotImage from "@/components/PackshotImage"
+import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage"
 import { ShoppingBag, Package } from "lucide-react"
 import { useCartStore } from "@/store/cartStore"
 import Link from "next/link"
@@ -77,7 +77,7 @@ export function PacksSection() {
                 <PackshotImage
                   src={pack.image || "/placeholder.svg"}
                   alt={t(pack.titleKey)}
-                  style={{ objectFit: "contain", width: "100%", height: "100%", padding: "8%" }}
+                  style={PACKSHOT_PREMIUM_STYLE}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">

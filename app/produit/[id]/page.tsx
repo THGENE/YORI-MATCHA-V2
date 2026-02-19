@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import PackshotImage from "@/components/PackshotImage"
+import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage"
 import { useI18n } from "@/lib/i18n"
 import { catalogById, catalogProducts } from "@/lib/product-catalog"
 import { useCartStore } from "@/store/cartStore"
@@ -103,8 +103,7 @@ export default function ProductPage() {
             <PackshotImage
               src={product.image}
               alt={product.name}
-              className="transition-transform duration-300 hover:scale-[1.08]"
-              style={{ objectFit: "contain", width: "100%", height: "100%" }}
+              style={PACKSHOT_PREMIUM_STYLE}
             />
           </div>
 
@@ -209,7 +208,7 @@ export default function ProductPage() {
                     <PackshotImage
                       src={item.image}
                       alt={item.name}
-                      style={{ objectFit: "contain", width: "100%", height: "100%", padding: "8%" }}
+                      style={PACKSHOT_PREMIUM_STYLE}
                     />
                   </div>
                   <h3 className="font-medium text-foreground leading-snug">{item.name}</h3>

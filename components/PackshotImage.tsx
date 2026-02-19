@@ -1,20 +1,22 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 type PackshotImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   overlay?: boolean;
   flipX?: boolean;
 };
 
+export const PACKSHOT_PREMIUM_STYLE: React.CSSProperties = {
+  objectFit: "contain",
+  width: "100%",
+  height: "100%",
+  padding: "8%",
+};
+
 export default function PackshotImage({ overlay = true, flipX = false, ...props }: PackshotImageProps) {
   const mergedTransform = `${flipX ? "scaleX(-1)" : ""}${props.style?.transform ? ` ${props.style.transform}` : ""}`.trim();
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      viewport={{ once: true }}
+    <div
       style={{
         position: "relative",
         display: "inline-block",
@@ -31,7 +33,10 @@ export default function PackshotImage({ overlay = true, flipX = false, ...props 
           width: "100%",
           height: "100%",
           objectFit: "contain",
+          objectPosition: "center",
           transform: mergedTransform || undefined,
+          imageRendering: "auto",
+          filter: "none",
           ...props.style,
         }}
       />
@@ -49,11 +54,10 @@ export default function PackshotImage({ overlay = true, flipX = false, ...props 
             pointerEvents: "none",
             zIndex: 2,
             objectFit: "cover",
-            opacity: 0.95,
-            filter: "hue-rotate(-8deg) saturate(1.08) brightness(0.94)",
+            opacity: 1,
           }}
         />
       )}
-    </motion.div>
+    </div>
   );
 }
