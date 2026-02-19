@@ -32,14 +32,17 @@ const accessoryBackgrounds = [
   {
     src: "/images/accessory-chasen-1.jpg",
     alt: "Chasen - fouet en bambou",
+    objectPosition: "center center",
   },
   {
     src: "/images/accessory-chasen-2.jpg",
     alt: "Chasen vue du dessus",
+    objectPosition: "center center",
   },
   {
-    src: "/images/accessory-chashaku-1.jpg",
-    alt: "Chashaku - cuillere en bambou",
+    src: "/images/accessory-chashaku-bamboo.jpg",
+    alt: "Chashaku en bambou",
+    objectPosition: "center 38%",
   },
 ]
 
@@ -79,6 +82,7 @@ export function AccessoriesSection() {
               className={`object-cover brightness-105 contrast-95 saturate-90 transition-opacity duration-1000 ${
                 index === activeBackgroundIndex ? "opacity-100" : "opacity-0"
               }`}
+              style={{ objectPosition: background.objectPosition }}
             />
           ))}
           <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
