@@ -68,15 +68,13 @@ export default function CartSidebar({ open, onClose }: { open: boolean; onClose:
                     fill
                     className={item.id === "yame-velvet" || item.id === "uji-harmony" ? "object-contain" : "object-cover"}
                   />
-                  {(item.id === "yame-velvet" || item.id === "uji-harmony") && (
-                    <Image
-                      src="/images/matcha-overlay.svg"
-                      alt=""
-                      aria-hidden
-                      fill
-                      className="pointer-events-none object-cover"
-                    />
-                  )}
+                  <Image
+                    src="/images/matcha-overlay.svg"
+                    alt=""
+                    aria-hidden
+                    fill
+                    className="pointer-events-none object-cover"
+                  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="font-medium line-clamp-2">{item.name}</div>

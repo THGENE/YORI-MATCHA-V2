@@ -396,15 +396,13 @@ export default function PanierPage() {
                           fill
                           className={darkBackdrop ? "object-contain" : "object-cover"}
                         />
-                        {darkBackdrop && (
-                          <Image
-                            src="/images/matcha-overlay.svg"
-                            alt=""
-                            aria-hidden
-                            fill
-                            className="pointer-events-none object-cover"
-                          />
-                        )}
+                        <Image
+                          src="/images/matcha-overlay.svg"
+                          alt=""
+                          aria-hidden
+                          fill
+                          className="pointer-events-none object-cover"
+                        />
                       </div>
                       <div className="min-w-0">
                         <p className="font-semibold text-lg truncate">{item.name}</p>
