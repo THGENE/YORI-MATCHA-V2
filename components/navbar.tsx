@@ -59,7 +59,7 @@ export function Navbar() {
     <header className="relative z-40 bg-background/90 backdrop-blur-md border-b border-border/50">
       {addFeedbackOpen && lastAddedProduct && (
         <div className="fixed inset-0 z-[120] bg-background/85 backdrop-blur-md p-3 md:p-8 overflow-y-auto">
-          <div className="mx-auto mt-2 md:mt-5 w-full max-w-7xl bg-card/95 border border-border/60 ring-1 ring-border/40 rounded-2xl shadow-2xl overflow-hidden">
+          <div className="mx-auto w-full max-w-7xl bg-card/95 border border-border/60 ring-1 ring-border/40 rounded-2xl shadow-2xl overflow-hidden">
             <div className="flex items-center justify-between px-6 md:px-8 py-5 md:py-6 border-b border-border/50">
               <h3 className="text-foreground text-2xl md:text-4xl font-semibold flex items-center gap-3 md:gap-4">
                 <Check className="h-6 w-6 md:h-7 md:w-7 text-primary" />

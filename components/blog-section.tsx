@@ -2,7 +2,7 @@
 
 import { useI18n } from "@/lib/i18n"
 import Image from "next/image"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { ArrowRight, Play } from "lucide-react"
 
 const articles = [
@@ -38,6 +38,20 @@ const articles = [
 export function BlogSection() {
   const { t } = useI18n()
   const [playingVideos, setPlayingVideos] = useState<Record<string, boolean>>({})
+  const iframeRefs = useRef<Record<string, HTMLIFrameElement | null>>({})
+
+  const forceYoutubePlay = (iframe: HTMLIFrameElement | null) => {
+    if (!iframe?.contentWindow) return
+
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: "command", func: "mute", args: [] }),
+      "*"
+    )
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: "command", func: "playVideo", args: [] }),
+      "*"
+    )
+  }
 
   return (
     <section id="blog" className="py-20 lg:py-24 px-4 bg-secondary/20">
@@ -60,9 +74,13 @@ export function BlogSection() {
               <div className="relative aspect-video overflow-hidden">
                 {article.hasVideo && playingVideos[article.id] ? (
                   <iframe
-                    src={`${article.videoUrl}?autoplay=1&rel=0`}
+                    ref={(element) => {
+                      iframeRefs.current[article.id] = element
+                    }}
+                    src={`${article.videoUrl}?autoplay=1&mute=1&playsinline=1&rel=0&enablejsapi=1&controls=1`}
                     title={t(article.titleKey)}
-                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    onLoad={() => forceYoutubePlay(iframeRefs.current[article.id])}
                     allowFullScreen
                     className="h-full w-full border-0"
                   />
@@ -78,10 +96,10 @@ export function BlogSection() {
                       <button
                         type="button"
                         onClick={() => setPlayingVideos((prev) => ({ ...prev, [article.id]: true }))}
-                        className="absolute inset-0 bg-background/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="absolute inset-0 bg-background/25 hover:bg-background/35 flex items-center justify-center transition-colors"
                         aria-label={`Play ${t(article.titleKey)}`}
                       >
-                        <span className="bg-primary/90 rounded-full p-3">
+                        <span className="bg-primary/90 rounded-full p-3 shadow-lg">
                           <Play className="h-5 w-5 text-primary-foreground fill-current" />
                         </span>
                       </button>

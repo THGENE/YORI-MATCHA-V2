@@ -2,13 +2,27 @@
 
 import { useI18n } from "@/lib/i18n"
 import Image from "next/image"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Zap, Shield, Brain, Sparkles, Play } from "lucide-react"
 
 export function EducationSection() {
   const { t } = useI18n()
   const [isPlaying, setIsPlaying] = useState(false)
-  const videoUrl = "https://www.youtube.com/embed/5U1KfL7b6As?autoplay=1&rel=0"
+  const videoRef = useRef<HTMLIFrameElement | null>(null)
+  const videoUrl = "https://www.youtube.com/embed/5U1KfL7b6As?autoplay=1&mute=1&playsinline=1&rel=0&enablejsapi=1&controls=1"
+
+  const forceYoutubePlay = () => {
+    if (!videoRef.current?.contentWindow) return
+
+    videoRef.current.contentWindow.postMessage(
+      JSON.stringify({ event: "command", func: "mute", args: [] }),
+      "*"
+    )
+    videoRef.current.contentWindow.postMessage(
+      JSON.stringify({ event: "command", func: "playVideo", args: [] }),
+      "*"
+    )
+  }
 
   const benefits = [
     { icon: Zap, titleKey: "education.benefits.energy", descKey: "education.benefits.energyDesc" },
@@ -58,9 +72,11 @@ export function EducationSection() {
           <div className="relative aspect-video rounded-sm overflow-hidden bg-card border border-border/50">
             {isPlaying ? (
               <iframe
+                ref={videoRef}
                 src={videoUrl}
                 title="Matcha preparation video"
-                allow="autoplay; encrypted-media; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                onLoad={forceYoutubePlay}
                 allowFullScreen
                 className="h-full w-full border-0"
               />
