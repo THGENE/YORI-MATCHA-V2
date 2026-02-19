@@ -6,6 +6,7 @@ import PackshotImage from "@/components/PackshotImage"
 import { Star, ShoppingBag, ChevronDown, ChevronUp } from "lucide-react"
 import { useCartStore } from "@/store/cartStore"
 import Link from "next/link"
+import { catalogById } from "@/lib/product-catalog"
 
 type Product = {
   id: string
@@ -28,7 +29,7 @@ const products: Product[] = [
   {
     id: "yame-velvet",
     name: "Yame Velvet",
-    image: "/images/uji single garden.png",
+    image: "/images/yame heritage.png",
     price: 34.90,
     origin: "Yame, Fukuoka, Japon",
     composition: { fr: "100% Matcha Ceremonial", en: "100% Ceremonial Matcha" },
@@ -126,12 +127,13 @@ function ProductCard({ product }: { product: Product }) {
   const { t, locale } = useI18n()
   const addItem = useCartStore((s) => s.addItem)
   const [expanded, setExpanded] = useState(false)
+  const resolvedImage = catalogById[product.id]?.image ?? product.image
 
   return (
     <div className="product-card-interactive bg-card border border-border/50 rounded-sm overflow-hidden transition-all duration-300 h-full flex flex-col">
       <div className="relative aspect-square overflow-hidden">
         <PackshotImage
-          src={product.image || "/placeholder.svg"}
+          src={resolvedImage || "/placeholder.svg"}
           alt={product.name}
           style={{ objectFit: "cover", width: "100%", height: "100%" }}
         />

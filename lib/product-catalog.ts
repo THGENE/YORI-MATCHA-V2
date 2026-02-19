@@ -13,7 +13,7 @@ export const catalogProducts: CatalogProduct[] = [
     id: "yame-velvet",
     name: "Yame Velvet",
     category: "matcha",
-    image: "/images/uji single garden.png",
+    image: "/images/Yori Yame velvet.png",
     price: 34.9,
     subtitle: {
       fr: "Matcha Ceremonial • Yame, Japon",
@@ -28,7 +28,7 @@ export const catalogProducts: CatalogProduct[] = [
     id: "uji-harmony",
     name: "Uji Harmony",
     category: "matcha",
-    image: "/images/uji single garden.png",
+    image: "/images/Yori Uji harmony.png",
     price: 32.9,
     subtitle: {
       fr: "Matcha Ceremonial • Uji, Japon",
@@ -133,7 +133,7 @@ export const catalogProducts: CatalogProduct[] = [
     id: "chasen",
     name: "Chasen",
     category: "accessory",
-    image: "/images/daily-matcha.png",
+    image: "/images/accessory-chasen-1.jpg",
     price: 24.9,
     subtitle: {
       fr: "Fouet en bambou",
@@ -148,7 +148,7 @@ export const catalogProducts: CatalogProduct[] = [
     id: "chawan",
     name: "Chawan",
     category: "accessory",
-    image: "/images/daily-matcha.png",
+    image: "/images/logo-y.png",
     price: 29.9,
     subtitle: {
       fr: "Bol a matcha",
@@ -163,7 +163,7 @@ export const catalogProducts: CatalogProduct[] = [
     id: "chashaku",
     name: "Chashaku",
     category: "accessory",
-    image: "/images/daily-matcha.png",
+    image: "/images/logo-y.png",
     price: 12.9,
     subtitle: {
       fr: "Cuillere en bambou",

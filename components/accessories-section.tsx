@@ -6,25 +6,23 @@ import { ShoppingBag } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useCartStore } from "@/store/cartStore"
 import Link from "next/link"
+import { catalogById } from "@/lib/product-catalog"
 
 const accessories = [
   {
     id: "chasen",
     titleKey: "accessories.chasen.title",
     descKey: "accessories.chasen.description",
-    price: 24.90,
   },
   {
     id: "chawan",
     titleKey: "accessories.chawan.title",
     descKey: "accessories.chawan.description",
-    price: 29.90,
   },
   {
     id: "chashaku",
     titleKey: "accessories.chashaku.title",
     descKey: "accessories.chashaku.description",
-    price: 12.90,
   },
 ]
 
@@ -38,11 +36,6 @@ const accessoryBackgrounds = [
     src: "/images/accessory-chasen-2.jpg",
     alt: "Chasen vue du dessus",
     objectPosition: "center center",
-  },
-  {
-    src: "/images/accessory-chashaku-bamboo.jpg",
-    alt: "Chashaku en bambou",
-    objectPosition: "center 38%",
   },
 ]
 
@@ -89,7 +82,11 @@ export function AccessoriesSection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {accessories.map((item) => (
+          {accessories.map((item) => {
+            const catalogProduct = catalogById[item.id]
+            const itemPrice = catalogProduct?.price ?? 0
+
+            return (
             <div
               key={item.id}
               className="product-card-interactive bg-card border border-border/50 p-6 rounded-sm transition-colors h-full flex flex-col"
@@ -101,11 +98,15 @@ export function AccessoriesSection() {
                 {t(item.descKey)}
               </p>
               <div className="flex items-center justify-between mt-auto">
-                <span className="text-primary font-bold text-lg">{item.price.toFixed(2)}{"€"}</span>
+                <span className="text-primary font-bold text-lg">{itemPrice.toFixed(2)}{"€"}</span>
                 <button
                   type="button"
                   onClick={() => {
-                    addItem({ id: item.id, name: t(item.titleKey), price: item.price })
+                    addItem({
+                      id: item.id,
+                      name: catalogProduct?.name ?? t(item.titleKey),
+                      price: itemPrice,
+                    })
                   }}
                   className="btn-client flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 text-sm font-medium tracking-wider uppercase hover:bg-primary/90 transition-colors rounded-sm cursor-pointer"
                 >
@@ -120,7 +121,7 @@ export function AccessoriesSection() {
                 {locale === "fr" ? "Voir la fiche produit" : "View product details"}
               </Link>
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </section>

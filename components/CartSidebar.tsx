@@ -3,7 +3,9 @@
 import { useCartStore } from "@/store/cartStore";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { X, ShoppingBag } from "lucide-react";
+import { X } from "lucide-react";
+import { catalogById } from "@/lib/product-catalog";
+import Image from "next/image";
 
 export default function CartSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const items = useCartStore((s) => s.items);
@@ -57,8 +59,24 @@ export default function CartSidebar({ open, onClose }: { open: boolean; onClose:
           ) : (
             items.map((item) => (
               <div key={item.id} className="flex items-start gap-3 border border-border/50 rounded-sm p-3 bg-background/40">
-                <div className="h-10 w-10 rounded-full bg-primary/15 text-primary flex items-center justify-center shrink-0">
-                  <ShoppingBag className="h-4 w-4" />
+                <div
+                  className={`relative h-10 w-10 rounded-sm overflow-hidden shrink-0 ${item.id === "yame-velvet" || item.id === "uji-harmony" ? "bg-[#050505]" : "bg-secondary/40"}`}
+                >
+                  <Image
+                    src={catalogById[item.id]?.image ?? "/images/logo-y.png"}
+                    alt={item.name}
+                    fill
+                    className={item.id === "yame-velvet" || item.id === "uji-harmony" ? "object-contain" : "object-cover"}
+                  />
+                  {(item.id === "yame-velvet" || item.id === "uji-harmony") && (
+                    <Image
+                      src="/images/matcha-overlay.svg"
+                      alt=""
+                      aria-hidden
+                      fill
+                      className="pointer-events-none object-cover"
+                    />
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="font-medium line-clamp-2">{item.name}</div>
