@@ -3,11 +3,13 @@ import { motion } from "framer-motion";
 
 type PackshotImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   overlay?: boolean;
+  flipX?: boolean;
 };
 
 const darkBackdropImages = [
   "/images/yori uji harmony.png",
-  "/images/yori yame velvet.png",
+  "/images/uji single garden.png",
+  "/images/yame heritage.png",
 ];
 
 function usesDarkBackdrop(src?: string) {
@@ -16,8 +18,9 @@ function usesDarkBackdrop(src?: string) {
   return darkBackdropImages.some((image) => normalized.includes(image));
 }
 
-export default function PackshotImage({ overlay = true, ...props }: PackshotImageProps) {
+export default function PackshotImage({ overlay = true, flipX = false, ...props }: PackshotImageProps) {
   const darkBackdrop = usesDarkBackdrop(typeof props.src === "string" ? props.src : undefined);
+  const mergedTransform = `${flipX ? "scaleX(-1)" : ""}${props.style?.transform ? ` ${props.style.transform}` : ""}`.trim();
 
   return (
     <motion.div
@@ -41,6 +44,7 @@ export default function PackshotImage({ overlay = true, ...props }: PackshotImag
           width: "100%",
           height: "100%",
           objectFit: darkBackdrop ? "contain" : undefined,
+          transform: mergedTransform || undefined,
           ...props.style,
         }}
       />

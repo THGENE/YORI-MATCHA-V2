@@ -101,6 +101,7 @@ export default function ProductPage() {
         <div className="grid lg:grid-cols-2 gap-10 items-start mb-16">
           <div className="bg-card border border-border/50 rounded-sm overflow-hidden aspect-square p-3 lg:p-6">
             <PackshotImage
+              flipX={product.id === "yame-velvet"}
               src={product.image}
               alt={product.name}
               className="transition-transform duration-300 hover:scale-[1.08]"
@@ -207,6 +208,7 @@ export default function ProductPage() {
                 <Link href={`/produit/${item.id}`} className="block">
                   <div className="relative aspect-square rounded-sm overflow-hidden bg-secondary/30 mb-4">
                     <PackshotImage
+                      flipX={item.id === "yame-velvet"}
                       src={item.image}
                       alt={item.name}
                       style={{ objectFit: "cover", width: "100%", height: "100%" }}

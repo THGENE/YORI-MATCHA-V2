@@ -63,6 +63,7 @@ export function RangesSection() {
             >
               <div className="relative aspect-square overflow-hidden">
                 <PackshotImage
+                  flipX={range.productId === "yame-velvet"}
                   src={productImage || "/placeholder.svg"}
                   alt={t(range.titleKey)}
                   style={{ objectFit: "cover", width: "100%", height: "100%" }}

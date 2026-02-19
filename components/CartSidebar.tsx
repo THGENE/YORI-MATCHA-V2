@@ -66,7 +66,7 @@ export default function CartSidebar({ open, onClose }: { open: boolean; onClose:
                     src={catalogById[item.id]?.image ?? "/images/logo-y.png"}
                     alt={item.name}
                     fill
-                    className={item.id === "yame-velvet" || item.id === "uji-harmony" ? "object-contain" : "object-cover"}
+                    className={`${item.id === "yame-velvet" || item.id === "uji-harmony" ? "object-contain" : "object-cover"} ${item.id === "yame-velvet" ? "-scale-x-100" : ""}`}
                   />
                   <Image
                     src="/images/matcha-overlay.svg"

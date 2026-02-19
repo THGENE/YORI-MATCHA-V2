@@ -8,8 +8,8 @@ import { Zap, Shield, Brain, Sparkles, Play } from "lucide-react"
 export function EducationSection() {
   const { t } = useI18n()
   const [isPlaying, setIsPlaying] = useState(false)
-  const videoUrl =
-    "https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&mute=1&playsinline=1&rel=0&controls=1&modestbranding=1"
+  const openSourceVideoUrl =
+    "https://commons.wikimedia.org/wiki/Special:FilePath/Matcha%20latte%20whisking.webm"
 
   const benefits = [
     { icon: Zap, titleKey: "education.benefits.energy", descKey: "education.benefits.energyDesc" },
@@ -58,14 +58,22 @@ export function EducationSection() {
           {/* Video placeholder */}
           <div className="relative aspect-video rounded-sm overflow-hidden bg-card border border-border/50">
             {isPlaying ? (
-              <iframe
-                src={videoUrl}
-                title="Matcha preparation video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="h-full w-full border-0"
-              />
+              <video
+                controls
+                autoPlay
+                playsInline
+                className="h-full w-full object-cover"
+                aria-label="Open-source matcha preparation video with English subtitles"
+              >
+                <source src={openSourceVideoUrl} type="video/webm" />
+                <track
+                  kind="subtitles"
+                  src="/videos/matcha-preparation-en.vtt"
+                  srcLang="en"
+                  label="English"
+                  default
+                />
+              </video>
             ) : (
               <>
                 <Image

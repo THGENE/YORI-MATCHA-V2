@@ -55,7 +55,7 @@ const articles = [
           fr: "Seules les feuilles les plus jeunes sont retenues pour conserver un profil fin. Cette sélection limite l'amertume et améliore la douceur naturelle en bouche.",
           en: "Only the youngest leaves are selected to keep a refined profile. This selection reduces bitterness and improves natural sweetness on the palate.",
         },
-        image: "/images/Yori Yame velvet.png",
+        image: "/images/yame heritage.png",
         imageAlt: {
           fr: "Boîte Yame Velvet sur fond noir",
           en: "Yame Velvet tin on black background",
@@ -115,7 +115,7 @@ const articles = [
           fr: "Le broyage lent limite l'échauffement et protège les molécules aromatiques. On obtient une poudre très fine, adaptée à une texture lisse et homogène.",
           en: "Slow grinding limits heat and protects aromatic compounds. The result is a very fine powder, ideal for a smooth and homogeneous texture.",
         },
-        image: "/images/Yori Uji harmony.png",
+        image: "/images/uji single garden.png",
         imageAlt: {
           fr: "Boîte Uji Harmony sur fond noir",
           en: "Uji Harmony tin on black background",

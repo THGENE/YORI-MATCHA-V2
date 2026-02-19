@@ -48,7 +48,7 @@ const products: Product[] = [
   {
     id: "uji-harmony",
     name: "Uji Harmony",
-    image: "/images/uji single garden.png",
+    image: "/images/Yori Uji harmony.png",
     price: 32.90,
     origin: "Uji, Kyoto, Japon",
     composition: { fr: "100% Matcha Ceremonial", en: "100% Ceremonial Matcha" },
@@ -131,11 +131,19 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="product-card-interactive bg-card border border-border/50 rounded-sm overflow-hidden transition-all duration-300 h-full flex flex-col">
-      <div className="relative aspect-square overflow-hidden">
+      <div className="relative aspect-square overflow-hidden bg-[#050505]">
         <PackshotImage
+          overlay={false}
+          flipX={product.id === "yame-velvet"}
           src={resolvedImage || "/placeholder.svg"}
           alt={product.name}
-          style={{ objectFit: "cover", width: "100%", height: "100%" }}
+          style={{ objectFit: "contain", width: "100%", height: "100%", padding: "10%" }}
+        />
+        <img
+          src="/images/matcha-overlay.svg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-y-0 right-0 h-full w-[58%] object-cover pointer-events-none opacity-95"
         />
         {product.badge && (
           <div className="absolute top-4 left-4">

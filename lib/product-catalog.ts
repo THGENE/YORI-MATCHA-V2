@@ -13,7 +13,7 @@ export const catalogProducts: CatalogProduct[] = [
     id: "yame-velvet",
     name: "Yame Velvet",
     category: "matcha",
-    image: "/images/Yori Yame velvet.png",
+    image: "/images/yame heritage.png",
     price: 34.9,
     subtitle: {
       fr: "Matcha Ceremonial • Yame, Japon",
