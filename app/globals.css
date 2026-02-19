@@ -61,6 +61,20 @@
     transform: none;
   }
 
+  .product-card-interactive {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .product-card-interactive:hover {
+    border-color: hsl(var(--primary) / 0.35);
+  }
+
+  .product-card-interactive:has(.btn-client:hover),
+  .product-card-interactive:has(.btn-client:active),
+  .product-card-interactive:has(.btn-client:focus-visible) {
+    border-color: hsl(var(--border) / 0.5);
+  }
+
   .btn-client:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px hsl(var(--ring) / 0.6), 0 0 0 4px hsl(var(--background));

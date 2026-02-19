@@ -87,7 +87,7 @@ export function AccessoriesSection() {
           {accessories.map((item) => (
             <div
               key={item.id}
-              className="bg-card border border-border/50 p-6 rounded-sm hover:border-primary/30 transition-colors h-full flex flex-col"
+              className="product-card-interactive bg-card border border-border/50 p-6 rounded-sm transition-colors h-full flex flex-col"
             >
               <h3 className="font-serif text-xl font-bold text-foreground mb-2 min-h-[3.5rem] leading-snug">
                 {t(item.titleKey)}

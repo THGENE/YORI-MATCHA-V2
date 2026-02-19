@@ -127,7 +127,7 @@ function ProductCard({ product }: { product: Product }) {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <div className="bg-card border border-border/50 rounded-sm overflow-hidden hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
+    <div className="product-card-interactive bg-card border border-border/50 rounded-sm overflow-hidden transition-all duration-300 h-full flex flex-col">
       <div className="relative aspect-square overflow-hidden">
         <PackshotImage
           src={product.image || "/placeholder.svg"}

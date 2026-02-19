@@ -64,7 +64,7 @@ export function PacksSection() {
           {packs.map((pack) => (
             <div
               key={pack.id}
-              className="bg-card border border-border/50 rounded-sm overflow-hidden hover:border-primary/40 transition-all duration-300 group h-full flex flex-col"
+              className="product-card-interactive bg-card border border-border/50 rounded-sm overflow-hidden transition-all duration-300 group h-full flex flex-col"
             >
               <div className="relative aspect-video overflow-hidden">
                 <PackshotImage
