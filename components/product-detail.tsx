@@ -4,7 +4,6 @@ import { useState } from "react"
 import { useI18n } from "@/lib/i18n"
 import PackshotImage from "@/components/PackshotImage"
 import { Star, ShoppingBag, ChevronDown, ChevronUp } from "lucide-react"
-import SectionReveal from "@/components/ui/SectionReveal"
 import { useRouter } from "next/navigation"
 
 type Product = {
@@ -254,7 +253,7 @@ export function ProductsSection() {
   const { t, locale } = useI18n();
 
   return (
-    <SectionReveal id="bestsellers" className="py-20 lg:py-24 px-4 bg-secondary/20">
+    <section id="bestsellers" className="py-20 lg:py-24 px-4 bg-secondary/20">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4 text-balance">
@@ -281,6 +280,6 @@ export function ProductsSection() {
           </div>
         </div>
       </div>
-    </SectionReveal>
+    </section>
   );
 }

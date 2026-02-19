@@ -49,7 +49,7 @@ export function PacksSection() {
   const router = useRouter()
 
   return (
-    <section id="packs" className="py-20 lg:py-24 px-4">
+    <section id="packs" className="pt-16 pb-20 lg:pt-20 lg:pb-24 px-4">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4 text-balance">

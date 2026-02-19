@@ -2,11 +2,13 @@
 
 import { useI18n } from "@/lib/i18n"
 import Image from "next/image"
+import { useState } from "react"
 import { Zap, Shield, Brain, Sparkles, Play } from "lucide-react"
 
 export function EducationSection() {
   const { t } = useI18n()
-  const videoUrl = "https://www.youtube.com/results?search_query=comment+preparer+matcha"
+  const [isPlaying, setIsPlaying] = useState(false)
+  const videoUrl = "https://www.youtube.com/embed/5U1KfL7b6As?autoplay=1&rel=0"
 
   const benefits = [
     { icon: Zap, titleKey: "education.benefits.energy", descKey: "education.benefits.energyDesc" },
@@ -54,23 +56,34 @@ export function EducationSection() {
 
           {/* Video placeholder */}
           <div className="relative aspect-video rounded-sm overflow-hidden bg-card border border-border/50">
-            <Image
-              src="/images/uji single garden.png"
-              alt="Matcha preparation"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-background/40 flex items-center justify-center">
-              <a
-                href={videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary/90 hover:bg-primary text-primary-foreground rounded-full p-4 transition-colors"
-                aria-label="Play video"
-              >
-                <Play className="h-8 w-8 fill-current" />
-              </a>
-            </div>
+            {isPlaying ? (
+              <iframe
+                src={videoUrl}
+                title="Matcha preparation video"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full border-0"
+              />
+            ) : (
+              <>
+                <Image
+                  src="/images/uji single garden.png"
+                  alt="Matcha preparation"
+                  fill
+                  className="object-cover"
+                />
+                <button
+                  type="button"
+                  onClick={() => setIsPlaying(true)}
+                  className="absolute inset-0 bg-background/40 flex items-center justify-center"
+                  aria-label="Play video"
+                >
+                  <span className="bg-primary/90 hover:bg-primary text-primary-foreground rounded-full p-4 transition-colors">
+                    <Play className="h-8 w-8 fill-current" />
+                  </span>
+                </button>
+              </>
+            )}
           </div>
         </div>
 

@@ -18,8 +18,8 @@ export default function HomePage() {
         <HeroSection />
         <Navbar />
         <RangesSection />
-        <ProductsSection />
         <PacksSection />
+        <ProductsSection />
         <AboutSection />
         <TerroirSection />
         <AccessoriesSection />

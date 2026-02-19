@@ -38,7 +38,7 @@ export function RangesSection() {
   const { t, locale } = useI18n()
 
   return (
-    <section id="ranges" className="py-20 lg:py-24 px-4">
+    <section id="ranges" className="pt-20 pb-16 lg:pt-24 lg:pb-20 px-4">
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-4 text-balance">

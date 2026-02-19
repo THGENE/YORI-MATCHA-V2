@@ -2,6 +2,7 @@
 
 import { useI18n } from "@/lib/i18n"
 import Image from "next/image"
+import { useState } from "react"
 import { ArrowRight, Play } from "lucide-react"
 
 const articles = [
@@ -11,7 +12,7 @@ const articles = [
     excerptKey: "blog.articles.production.excerpt",
     image: "/images/daily-matcha.png",
     hasVideo: true,
-    videoUrl: "https://www.youtube.com/results?search_query=production+matcha+japon",
+    videoUrl: "https://www.youtube.com/embed/5U1KfL7b6As",
     date: "2025-12-15",
   },
   {
@@ -20,7 +21,7 @@ const articles = [
     excerptKey: "blog.articles.transformation.excerpt",
     image: "/images/uji single garden.png",
     hasVideo: true,
-    videoUrl: "https://www.youtube.com/results?search_query=transformation+tencha+matcha",
+    videoUrl: "https://www.youtube.com/embed/5U1KfL7b6As",
     date: "2025-11-28",
   },
   {
@@ -36,6 +37,7 @@ const articles = [
 
 export function BlogSection() {
   const { t } = useI18n()
+  const [playingVideos, setPlayingVideos] = useState<Record<string, boolean>>({})
 
   return (
     <section id="blog" className="py-20 lg:py-24 px-4 bg-secondary/20">
@@ -51,26 +53,40 @@ export function BlogSection() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {articles.map((article) => (
-            <a
+            <article
               key={article.id}
-              href={article.videoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="block bg-card border border-border/50 rounded-sm overflow-hidden hover:border-primary/30 transition-all duration-300 group cursor-pointer"
             >
               <div className="relative aspect-video overflow-hidden">
-                <Image
-                  src={article.image || "/placeholder.svg"}
-                  alt={t(article.titleKey)}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                {article.hasVideo && (
-                  <div className="absolute inset-0 bg-background/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="bg-primary/90 rounded-full p-3">
-                      <Play className="h-5 w-5 text-primary-foreground fill-current" />
-                    </div>
-                  </div>
+                {article.hasVideo && playingVideos[article.id] ? (
+                  <iframe
+                    src={`${article.videoUrl}?autoplay=1&rel=0`}
+                    title={t(article.titleKey)}
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    className="h-full w-full border-0"
+                  />
+                ) : (
+                  <>
+                    <Image
+                      src={article.image || "/placeholder.svg"}
+                      alt={t(article.titleKey)}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    {article.hasVideo && (
+                      <button
+                        type="button"
+                        onClick={() => setPlayingVideos((prev) => ({ ...prev, [article.id]: true }))}
+                        className="absolute inset-0 bg-background/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                        aria-label={`Play ${t(article.titleKey)}`}
+                      >
+                        <span className="bg-primary/90 rounded-full p-3">
+                          <Play className="h-5 w-5 text-primary-foreground fill-current" />
+                        </span>
+                      </button>
+                    )}
+                  </>
                 )}
                 {article.hasVideo && (
                   <div className="absolute top-3 left-3">
@@ -100,7 +116,7 @@ export function BlogSection() {
                   <ArrowRight className="h-4 w-4" />
                 </span>
               </div>
-            </a>
+            </article>
           ))}
         </div>
       </div>

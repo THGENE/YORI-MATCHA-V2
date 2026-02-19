@@ -75,7 +75,7 @@ export function AccessoriesSection() {
               src={background.src}
               alt={background.alt}
               fill
-              className={`object-cover transition-opacity duration-1000 ${
+              className={`object-cover brightness-105 contrast-95 saturate-90 transition-opacity duration-1000 ${
                 index === activeBackgroundIndex ? "opacity-100" : "opacity-0"
               }`}
             />
