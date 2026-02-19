@@ -49,6 +49,30 @@ export function Navbar() {
     }
   }, [router])
 
+  useEffect(() => {
+    router.prefetch("/panier")
+  }, [router])
+
+  useEffect(() => {
+    if (!addFeedbackOpen) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeAddFeedback()
+      }
+    }
+
+    window.addEventListener("keydown", onKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener("keydown", onKeyDown)
+    }
+  }, [addFeedbackOpen, closeAddFeedback])
+
   const scrollTo = (id: string) => {
     setMobileOpen(false)
     const el = document.getElementById(id)
@@ -58,8 +82,14 @@ export function Navbar() {
   return (
     <header className="relative z-40 bg-background/90 backdrop-blur-md border-b border-border/50">
       {addFeedbackOpen && lastAddedProduct && (
-        <div className="fixed inset-0 z-[120] bg-background/85 backdrop-blur-md p-3 md:p-8 overflow-y-auto">
-          <div className="mx-auto w-full max-w-7xl bg-card/95 border border-border/60 ring-1 ring-border/40 rounded-2xl shadow-2xl overflow-hidden">
+        <div
+          className="fixed inset-0 z-[120] bg-background/85 backdrop-blur-md p-3 md:p-8 overflow-y-auto"
+          onClick={closeAddFeedback}
+        >
+          <div
+            className="mx-auto w-full max-w-7xl bg-card/95 border border-border/60 ring-1 ring-border/40 rounded-2xl shadow-2xl overflow-hidden"
+            onClick={(event) => event.stopPropagation()}
+          >
             <div className="flex items-center justify-between px-6 md:px-8 py-5 md:py-6 border-b border-border/50">
               <h3 className="text-foreground text-2xl md:text-4xl font-semibold flex items-center gap-3 md:gap-4">
                 <Check className="h-6 w-6 md:h-7 md:w-7 text-primary" />
@@ -130,7 +160,7 @@ export function Navbar() {
                 <button
                   onClick={() => {
                     closeAddFeedback()
-                    setCartOpen(true)
+                    router.push("/panier")
                   }}
                   className="flex-1 bg-primary text-primary-foreground px-4 py-4 md:py-5 text-base md:text-lg font-medium tracking-wide uppercase hover:bg-primary/90 transition-colors rounded-md"
                 >

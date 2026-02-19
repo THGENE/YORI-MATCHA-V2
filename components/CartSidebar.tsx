@@ -1,13 +1,19 @@
 "use client";
 
 import { useCartStore } from "@/store/cartStore";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function CartSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const items = useCartStore((s) => s.items);
   const removeItem = useCartStore((s) => s.removeItem);
   const clear = useCartStore((s) => s.clear);
+  const router = useRouter();
   const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+
+  useEffect(() => {
+    router.prefetch("/panier");
+  }, [router]);
 
   return (
     <div
@@ -38,7 +44,14 @@ export default function CartSidebar({ open, onClose }: { open: boolean; onClose:
           <span>Total</span>
           <span>{total.toFixed(2)} €</span>
         </div>
-        <button className="w-full bg-primary text-primary-foreground py-3 rounded font-medium hover:bg-primary/90 transition mb-2" disabled={items.length===0}>
+        <button
+          className="w-full bg-primary text-primary-foreground py-3 rounded font-medium hover:bg-primary/90 transition mb-2"
+          disabled={items.length===0}
+          onClick={() => {
+            onClose();
+            router.push("/panier");
+          }}
+        >
           Finaliser la commande
         </button>
         <button className="w-full text-xs text-muted-foreground hover:underline" onClick={clear} disabled={items.length===0}>

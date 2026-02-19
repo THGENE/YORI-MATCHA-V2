@@ -2,23 +2,26 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { useMemo } from "react";
 
-export default function StripeProvider({ children, publishableKey }) {
-  const stripe = loadStripe(publishableKey);
+type Props = {
+  children: React.ReactNode;
+  publishableKey: string;
+  clientSecret: string;
+};
+
+export default function StripeProvider({ children, publishableKey, clientSecret }: Props) {
+  const stripePromise = useMemo(() => loadStripe(publishableKey), [publishableKey]);
 
   return (
     <Elements
-      stripe={stripe}
+      stripe={stripePromise}
       options={{
-        mode: "payment",
-        currency: "eur",
+        clientSecret,
         appearance: {
-          theme: "night",
+          theme: "stripe",
           variables: {
-            colorPrimary: "#ffffff",
-            colorBackground: "#000000",
-            colorText: "#ffffff",
-            colorDanger: "#ff4d4d",
+            colorPrimary: "#6f7f45",
           },
         },
       }}

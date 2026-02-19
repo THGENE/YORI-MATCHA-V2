@@ -13,13 +13,14 @@ export async function POST(req: Request) {
     (sum: number, item: any) => sum + item.price * item.quantity,
     0
   );
+  const amountProductsInCents = Math.round(amountProducts * 100);
 
   // Frais Chronopost
   const shippingCost =
     shippingMethod === "chronopost_express" ? 1290 : 790; // en centimes
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: amountProducts + shippingCost,
+    amount: amountProductsInCents + shippingCost,
     currency: "eur",
     automatic_payment_methods: { enabled: true }, // Apple Pay + CB
   });

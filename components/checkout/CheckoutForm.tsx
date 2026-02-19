@@ -2,6 +2,7 @@
 
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import type { FormEvent } from "react";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -10,7 +11,7 @@ export default function CheckoutForm() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!stripe || !elements) return;
 
@@ -31,14 +32,14 @@ export default function CheckoutForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <PaymentElement />
 
-      {message && <p className="text-red-400 text-sm">{message}</p>}
+      {message && <p className="text-red-500 text-sm">{message}</p>}
 
       <button
         disabled={!stripe || loading}
-        className="w-full bg-white text-black py-3 rounded-full font-medium hover:bg-neutral-200 transition disabled:opacity-50"
+        className="w-full bg-primary text-primary-foreground py-3 rounded-md font-medium hover:bg-primary/90 transition disabled:opacity-50"
       >
         {loading ? "Paiement en cours..." : "Payer maintenant"}
       </button>
