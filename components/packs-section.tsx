@@ -73,7 +73,7 @@ export function PacksSection() {
               key={pack.id}
               className="product-card-interactive bg-card border border-border/50 rounded-sm overflow-hidden transition-all duration-300 group h-full flex flex-col"
             >
-              <div className="relative aspect-video overflow-hidden">
+              <div className="product-visual-shell relative aspect-square overflow-hidden">
                 <PackshotImage
                   src={pack.image || "/placeholder.svg"}
                   alt={t(pack.titleKey)}

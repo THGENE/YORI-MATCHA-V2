@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage"
+import PackshotImage, { getPackshotStyleByProductId } from "@/components/PackshotImage"
 import { useI18n } from "@/lib/i18n"
 import { catalogById, catalogProducts } from "@/lib/product-catalog"
 import { useCartStore } from "@/store/cartStore"
@@ -103,7 +103,7 @@ export default function ProductPage() {
             <PackshotImage
               src={product.image}
               alt={product.name}
-              style={PACKSHOT_PREMIUM_STYLE}
+              style={getPackshotStyleByProductId(product.id)}
             />
           </div>
 
@@ -208,7 +208,7 @@ export default function ProductPage() {
                     <PackshotImage
                       src={item.image}
                       alt={item.name}
-                      style={PACKSHOT_PREMIUM_STYLE}
+                      style={getPackshotStyleByProductId(item.id)}
                     />
                   </div>
                   <h3 className="font-medium text-foreground leading-snug">{item.name}</h3>

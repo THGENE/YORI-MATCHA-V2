@@ -93,7 +93,7 @@
   .border-theme { border-color: hsl(var(--border)); }
 
   .product-visual-shell {
-    background: #050505;
+    background: #000000;
   }
 
   .product-powder-overlay {

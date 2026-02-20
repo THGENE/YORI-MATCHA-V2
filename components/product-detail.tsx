@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useI18n } from "@/lib/i18n"
-import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage"
+import PackshotImage, { getPackshotStyleByProductId } from "@/components/PackshotImage"
 import { Star, ShoppingBag, ChevronDown, ChevronUp } from "lucide-react"
 import { useCartStore } from "@/store/cartStore"
 import Link from "next/link"
@@ -131,11 +131,11 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="product-card-interactive bg-card border border-border/50 rounded-sm overflow-hidden transition-all duration-300 h-full flex flex-col">
-      <div className="relative aspect-square overflow-hidden bg-[#050505]">
+      <div className="product-visual-shell relative aspect-square overflow-hidden">
         <PackshotImage
           src={resolvedImage || "/placeholder.svg"}
           alt={product.name}
-          style={PACKSHOT_PREMIUM_STYLE}
+          style={getPackshotStyleByProductId(product.id)}
         />
         {product.badge && (
           <div className="absolute top-4 left-4">

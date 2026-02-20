@@ -1,7 +1,6 @@
 import React from "react";
 
 type PackshotImageProps = React.ImgHTMLAttributes<HTMLImageElement> & {
-  overlay?: boolean;
   flipX?: boolean;
 };
 
@@ -12,7 +11,16 @@ export const PACKSHOT_PREMIUM_STYLE: React.CSSProperties = {
   padding: "8%",
 };
 
-export default function PackshotImage({ overlay = false, flipX = false, ...props }: PackshotImageProps) {
+export const PACKSHOT_DAILY_MATCHA_STYLE: React.CSSProperties = {
+  ...PACKSHOT_PREMIUM_STYLE,
+};
+
+export function getPackshotStyleByProductId(productId?: string): React.CSSProperties {
+  void productId;
+  return PACKSHOT_DAILY_MATCHA_STYLE;
+}
+
+export default function PackshotImage({ flipX = false, ...props }: PackshotImageProps) {
   const mergedTransform = `${flipX ? "scaleX(-1)" : ""}${props.style?.transform ? ` ${props.style.transform}` : ""}`.trim();
 
   return (
@@ -23,7 +31,7 @@ export default function PackshotImage({ overlay = false, flipX = false, ...props
         width: "100%",
         height: "100%",
         overflow: "hidden",
-        background: "#050505",
+        background: "#000000",
       }}
     >
       <img
@@ -40,24 +48,6 @@ export default function PackshotImage({ overlay = false, flipX = false, ...props
           ...props.style,
         }}
       />
-      {overlay && (
-        <img
-          src="/images/matcha-overlay.svg"
-          alt=""
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            width: "58%",
-            height: "100%",
-            pointerEvents: "none",
-            zIndex: 2,
-            objectFit: "cover",
-            opacity: 1,
-          }}
-        />
-      )}
     </div>
   );
 }

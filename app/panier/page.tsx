@@ -8,7 +8,7 @@ import { catalogById } from "@/lib/product-catalog"
 import { ArrowLeft, ChevronDown, Lock, Trash2, X } from "lucide-react"
 import StripeProvider from "@/components/checkout/StripeProvider"
 import CheckoutForm from "@/components/checkout/CheckoutForm"
-import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage"
+import PackshotImage, { getPackshotStyleByProductId } from "@/components/PackshotImage"
 
 type Account = {
   title: "M" | "Mme"
@@ -392,7 +392,7 @@ export default function PanierPage() {
                         <PackshotImage
                           src={product?.image ?? "/images/logo-y.png"}
                           alt={item.name}
-                          style={PACKSHOT_PREMIUM_STYLE}
+                          style={getPackshotStyleByProductId(item.id)}
                         />
                       </div>
                       <div className="min-w-0">

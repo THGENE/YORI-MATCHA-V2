@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { X } from "lucide-react";
 import { catalogById } from "@/lib/product-catalog";
-import PackshotImage, { PACKSHOT_PREMIUM_STYLE } from "@/components/PackshotImage";
+import PackshotImage, { getPackshotStyleByProductId } from "@/components/PackshotImage";
 
 export default function CartSidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
   const items = useCartStore((s) => s.items);
@@ -63,7 +63,7 @@ export default function CartSidebar({ open, onClose }: { open: boolean; onClose:
                   <PackshotImage
                     src={catalogById[item.id]?.image ?? "/images/logo-y.png"}
                     alt={item.name}
-                    style={PACKSHOT_PREMIUM_STYLE}
+                    style={getPackshotStyleByProductId(item.id)}
                   />
                 </div>
                 <div className="flex-1 min-w-0">
