@@ -89,6 +89,7 @@ export function AccessoriesSection() {
             return (
             <div
               key={item.id}
+              id={`accessory-${item.id}`}
               className="product-card-interactive bg-card border border-border/50 p-6 rounded-sm transition-colors h-full flex flex-col"
             >
               <h3 className="font-serif text-xl font-bold text-foreground mb-2 min-h-[3.5rem] leading-snug">

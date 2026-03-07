@@ -38,7 +38,7 @@ export function EducationSection() {
         </div>
 
         {/* How to prepare */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+        <div id="education-howto" className="grid lg:grid-cols-2 gap-16 items-center mb-24">
           <div>
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-8">
               {t("education.howTo.title")}
@@ -98,7 +98,7 @@ export function EducationSection() {
         </div>
 
         {/* Matcha vs Coffee */}
-        <div className="bg-card border border-border/50 rounded-sm p-8 lg:p-12">
+        <div id="education-benefits" className="bg-card border border-border/50 rounded-sm p-8 lg:p-12">
           <div className="text-center mb-12">
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
               {t("education.benefits.title")}

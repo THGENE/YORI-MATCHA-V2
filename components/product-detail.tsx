@@ -287,7 +287,9 @@ export function ProductsSection() {
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
             {products.map((product) => (
-              <ProductCard key={`all-${product.id}`} product={product} />
+              <div key={`all-${product.id}`} id={`product-${product.id}`}>
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         </div>

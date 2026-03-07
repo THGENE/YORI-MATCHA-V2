@@ -175,6 +175,7 @@ export function BlogSection() {
           {articles.map((article) => (
             <article
               key={article.id}
+              id={`article-${article.id}`}
               className="block bg-card border border-border/50 rounded-sm overflow-hidden hover:border-primary/30 transition-all duration-300 group cursor-pointer"
             >
               <div className="relative aspect-video overflow-hidden">

@@ -13,6 +13,10 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [rangesOpen, setRangesOpen] = useState(false)
   const [discoverOpen, setDiscoverOpen] = useState(false)
+  const [bestsellersOpen, setBestsellersOpen] = useState(false)
+  const [accessoriesOpen, setAccessoriesOpen] = useState(false)
+  const [blogOpen, setBlogOpen] = useState(false)
+  const [educationOpen, setEducationOpen] = useState(false)
   const items = useCartStore((s) => s.items)
   const openCartSidebar = useCartStore((s) => s.openCartSidebar)
   const cartCount = items.reduce((sum, i) => sum + i.quantity, 0)
@@ -127,13 +131,13 @@ export function Navbar() {
             {discoverOpen && (
               <div className="absolute top-full left-0 pt-2">
                 <div className="bg-card border border-border rounded-sm p-3 min-w-56 shadow-xl">
-                  <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                  <button onClick={() => scrollTo("pack-discovery")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
                     {t("nav.discoveryPack")}
                   </button>
-                  <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                  <button onClick={() => scrollTo("pack-duo-ceremonial")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
                     {t("nav.duoCeremonial")}
                   </button>
-                  <button onClick={() => scrollTo("packs")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                  <button onClick={() => scrollTo("pack-duo-grand-cru")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
                     {t("nav.duoGrandCru")}
                   </button>
                 </div>
@@ -141,21 +145,108 @@ export function Navbar() {
             )}
           </div>
 
-          <button onClick={() => scrollTo("bestsellers")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-            {t("nav.bestsellers")}
-          </button>
+          <div
+            className="relative"
+            onMouseEnter={() => setBestsellersOpen(true)}
+            onMouseLeave={() => setBestsellersOpen(false)}
+          >
+            <button onClick={() => scrollTo("bestsellers")} className="flex items-center gap-1 text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+              {t("nav.bestsellers")}
+              <ChevronDown className="h-3 w-3" />
+            </button>
+            {bestsellersOpen && (
+              <div className="absolute top-full left-0 pt-2">
+                <div className="bg-card border border-border rounded-sm p-3 min-w-56 shadow-xl">
+                  <button onClick={() => scrollTo("product-yame-velvet")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    Yame Velvet
+                  </button>
+                  <button onClick={() => scrollTo("product-uji-harmony")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    Uji Harmony
+                  </button>
+                  <button onClick={() => scrollTo("product-yame-heritage")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    Yame Heritage
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
           <button onClick={() => scrollTo("about")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
             {t("nav.about")}
           </button>
-          <button onClick={() => scrollTo("accessories")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-            {t("nav.accessories")}
-          </button>
-          <button onClick={() => scrollTo("blog")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-            {t("nav.blog")}
-          </button>
-          <button onClick={() => scrollTo("education")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
-            {t("nav.education")}
-          </button>
+
+          <div
+            className="relative"
+            onMouseEnter={() => setAccessoriesOpen(true)}
+            onMouseLeave={() => setAccessoriesOpen(false)}
+          >
+            <button onClick={() => scrollTo("accessories")} className="flex items-center gap-1 text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+              {t("nav.accessories")}
+              <ChevronDown className="h-3 w-3" />
+            </button>
+            {accessoriesOpen && (
+              <div className="absolute top-full left-0 pt-2">
+                <div className="bg-card border border-border rounded-sm p-3 min-w-56 shadow-xl">
+                  <button onClick={() => scrollTo("accessory-chasen")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    Chasen
+                  </button>
+                  <button onClick={() => scrollTo("accessory-chawan")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    Chawan
+                  </button>
+                  <button onClick={() => scrollTo("accessory-chashaku")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    Chashaku
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div
+            className="relative"
+            onMouseEnter={() => setBlogOpen(true)}
+            onMouseLeave={() => setBlogOpen(false)}
+          >
+            <button onClick={() => scrollTo("blog")} className="flex items-center gap-1 text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+              {t("nav.blog")}
+              <ChevronDown className="h-3 w-3" />
+            </button>
+            {blogOpen && (
+              <div className="absolute top-full left-0 pt-2">
+                <div className="bg-card border border-border rounded-sm p-3 min-w-64 shadow-xl">
+                  <button onClick={() => scrollTo("article-transformation")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {locale === "fr" ? "Transformation du tencha" : "Tencha transformation"}
+                  </button>
+                  <button onClick={() => scrollTo("article-ceremony")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {locale === "fr" ? "Ceremonie du the" : "Tea ceremony"}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div
+            className="relative"
+            onMouseEnter={() => setEducationOpen(true)}
+            onMouseLeave={() => setEducationOpen(false)}
+          >
+            <button onClick={() => scrollTo("education")} className="flex items-center gap-1 text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
+              {t("nav.education")}
+              <ChevronDown className="h-3 w-3" />
+            </button>
+            {educationOpen && (
+              <div className="absolute top-full left-0 pt-2">
+                <div className="bg-card border border-border rounded-sm p-3 min-w-64 shadow-xl">
+                  <button onClick={() => scrollTo("education-howto")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {locale === "fr" ? "Preparation du matcha" : "Matcha preparation"}
+                  </button>
+                  <button onClick={() => scrollTo("education-benefits")} className="block w-full text-left px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-secondary/50 rounded-sm transition-colors">
+                    {locale === "fr" ? "Bienfaits du matcha" : "Matcha benefits"}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
           <button onClick={() => scrollTo("contact")} className="text-sm tracking-wide text-foreground/80 hover:text-primary transition-colors">
             {t("nav.contact")}
           </button>
@@ -168,12 +259,25 @@ export function Navbar() {
             <button onClick={() => scrollTo("grandcru")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.grandCru")}</button>
             <button onClick={() => scrollTo("daily")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.daily")}</button>
             <div className="border-t border-border/30 my-2" />
-            <button onClick={() => scrollTo("packs")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.discoveryPack")}</button>
+            <button onClick={() => scrollTo("pack-discovery")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.discoveryPack")}</button>
+            <button onClick={() => scrollTo("pack-duo-ceremonial")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.duoCeremonial")}</button>
+            <button onClick={() => scrollTo("pack-duo-grand-cru")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.duoGrandCru")}</button>
+            <div className="border-t border-border/30 my-2" />
             <button onClick={() => scrollTo("bestsellers")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.bestsellers")}</button>
+            <button onClick={() => scrollTo("product-yame-velvet")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">Yame Velvet</button>
+            <button onClick={() => scrollTo("product-uji-harmony")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">Uji Harmony</button>
+            <button onClick={() => scrollTo("product-yame-heritage")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">Yame Heritage</button>
             <button onClick={() => scrollTo("about")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.about")}</button>
             <button onClick={() => scrollTo("accessories")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.accessories")}</button>
+            <button onClick={() => scrollTo("accessory-chasen")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">Chasen</button>
+            <button onClick={() => scrollTo("accessory-chawan")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">Chawan</button>
+            <button onClick={() => scrollTo("accessory-chashaku")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">Chashaku</button>
             <button onClick={() => scrollTo("blog")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.blog")}</button>
+            <button onClick={() => scrollTo("article-transformation")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{locale === "fr" ? "Transformation du tencha" : "Tencha transformation"}</button>
+            <button onClick={() => scrollTo("article-ceremony")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{locale === "fr" ? "Ceremonie du the" : "Tea ceremony"}</button>
             <button onClick={() => scrollTo("education")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.education")}</button>
+            <button onClick={() => scrollTo("education-howto")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{locale === "fr" ? "Preparation du matcha" : "Matcha preparation"}</button>
+            <button onClick={() => scrollTo("education-benefits")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{locale === "fr" ? "Bienfaits du matcha" : "Matcha benefits"}</button>
             <button onClick={() => scrollTo("contact")} className="block w-full text-left px-2 py-3 text-sm text-foreground/80 hover:text-primary transition-colors">{t("nav.contact")}</button>
             <div className="pt-2">
               <button onClick={() => scrollTo("packs")} className="btn-client w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 py-3 text-sm font-medium tracking-wide hover:bg-primary/90 transition-colors rounded-sm">

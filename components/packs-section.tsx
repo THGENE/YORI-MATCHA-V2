@@ -71,6 +71,7 @@ export function PacksSection() {
           {packs.map((pack) => (
             <div
               key={pack.id}
+              id={`pack-${pack.id}`}
               className="product-card-interactive product-card-daily border rounded-sm overflow-hidden transition-all duration-300 group h-full flex flex-col"
             >
               <div className="product-visual-shell relative aspect-square overflow-hidden">
