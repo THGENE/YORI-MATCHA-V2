@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { I18nProvider } from "@/lib/i18n";
 import GlobalCartWidget from "@/components/GlobalCartWidget";
+import GlobalChatWidget from "@/components/GlobalChatWidget";
 
 export const metadata: Metadata = {
   title: "YORI Matcha | Matcha Japonais d’Exception",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <I18nProvider>
           {children}
           <GlobalCartWidget />
+          <GlobalChatWidget />
         </I18nProvider>
       </body>
     </html>
