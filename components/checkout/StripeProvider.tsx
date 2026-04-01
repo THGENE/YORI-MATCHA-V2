@@ -4,6 +4,15 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useMemo } from "react";
 
+const customPaymentMethods = [
+  {
+    id: "cpmt_1THNXPGyewrR8mJmWYmDIade",
+    options: {
+      type: "static" as const,
+    },
+  },
+];
+
 type Props = {
   children: React.ReactNode;
   publishableKey: string;
@@ -18,6 +27,7 @@ export default function StripeProvider({ children, publishableKey, clientSecret 
       stripe={stripePromise}
       options={{
         clientSecret,
+        customPaymentMethods,
         appearance: {
           theme: "stripe",
           variables: {

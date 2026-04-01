@@ -49,6 +49,7 @@ export async function POST(req: Request) {
       amount: finalAmount,
       currency: "eur",
       automatic_payment_methods: { enabled: true },
+      excluded_payment_method_types: ["bancontact", "eps"],
       metadata: {
         microPaymentTest: microPaymentEnabled ? "true" : "false",
       },
